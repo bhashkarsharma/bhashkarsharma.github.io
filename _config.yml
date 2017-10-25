@@ -14,7 +14,7 @@ exclude: ['config.rb', 'README.md']
 theme: jekyll-theme-minimal
 sass:
   load_paths:
-    - assets/_scss
+    - assets/
   style: :compressed
 
 title: Bhashkar Sharma
