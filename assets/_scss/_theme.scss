@@ -1,0 +1,25 @@
+body {
+    background-color: $body_bg;
+    color: $body_color;
+}
+
+a {
+   color: $link_color;
+
+    &:hover {
+        color: $link_hover_color;
+    }
+}
+
+.blog {
+
+    .post-list {
+
+        li {
+
+            .post-meta {
+                color: $light_text_color;
+            }
+        }
+    }
+}

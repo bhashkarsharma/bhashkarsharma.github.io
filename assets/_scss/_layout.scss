@@ -1,0 +1,112 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    margin: auto;
+    padding: 1em;
+
+    a {
+        font-size: 4em;
+    }
+}
+
+.content {
+    flex: 1;
+    margin: auto;
+    padding: 1em 2em;
+}
+
+footer {
+    margin: auto;
+    padding: 1em 2em;
+    
+    .links {
+        font-family: "FontAwesome";
+        
+        a {
+            font-size: 2em;
+            margin: 0 0.45em;
+            padding: 0.4em;
+            text-decoration: none;
+            
+            &.icon {
+                
+                &.fa-envelope:hover {
+                    color: #8e8e8e;
+                }
+                
+                &.fa-github:hover {
+                    color: #55a532;
+                }
+                
+                &.fa-instagram:hover {
+                    color: #d047d1;
+                }
+                
+                &.fa-linkedin:hover {
+                    color: #007bb6;
+                }
+                
+                &.fa-twitter:hover {
+                    color: #55acee;
+                }
+            }
+        }
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+.video-box {
+    height: 0;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    position: relative;
+    
+    iframe {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+}
+
+.blog {
+
+    .post-list {
+        list-style-type: none;
+        padding-left: 0;
+
+        li {
+            margin: 10px 0;
+
+            .post-meta {
+                display: inline-block;
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.post {
+    max-width: 600px;
+
+    .post-title {
+
+    }
+    .post-meta {
+        font-style: italic;
+    }
+    .post-content {
+    }
+}
