@@ -1,0 +1,59 @@
+---
+---
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+   color: green;
+    text-decoration: none;
+
+    &:hover {
+        color: blue;
+    }
+}
+
+header {
+    padding: 1em 2em;
+}
+
+.content {
+    flex: 1;
+    padding: 1em 2em;
+}
+
+footer {
+    padding: 1em 2em;
+}
+
+img {
+    max-width: 100%;
+}
+
+.home {
+
+    .post-list {
+        list-style-type: none;
+        padding-left: 0;
+
+        .post-meta {
+            display: inline-block;
+            width: 150px;
+        }
+    }
+}
+
+.post {
+    max-width: 600px;
+
+    .post-title {
+
+    }
+    .post-meta {
+        font-style: italic;
+    }
+    .post-content {
+    }
+}

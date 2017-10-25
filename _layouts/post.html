@@ -1,0 +1,11 @@
+---
+layout: base
+---
+<div class="post">
+    <h2 class="post-title">{{ page.title }}</h2>
+    {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+    <span class="post-meta">{{ page.date | date: date_format }}</span>
+    <div class="post-content">
+    {{ content }}
+    </div>
+</div>
