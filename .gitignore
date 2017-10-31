@@ -1,3 +1,4 @@
+.sass-cache
 .jekyll-metadata
 _site/
-assets/_sass/.sass-cache
+node_modules/

@@ -7,9 +7,20 @@ defaults:
       layout: "post"
 
 parentsite: https://www.bhashkar.me
-permalink: /:title/
-plugins: ['jekyll-paginate', 'jekyll-sitemap', 'jekyll-gist', 'jekyll-feed', 'jemoji']
-exclude: ['config.rb', 'README.md']
+permalink: /blog/:title/
+plugins:
+  - 'jekyll-paginate'
+  - 'jekyll-sitemap'
+  - 'jekyll-gist'
+  - 'jekyll-feed'
+  - 'jemoji'
+
+exclude: 
+  - 'config.rb'
+  - 'README.md'
+  - 'package.json'
+  - 'package-lock.json'
+  - 'node_modules'
 
 theme: jekyll-theme-minimal
 sass:

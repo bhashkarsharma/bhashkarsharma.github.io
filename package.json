@@ -1,0 +1,41 @@
+{
+  "name": "bhashkarsharma.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run jekyll\" \"npm run webpack\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jekyll": "bundle exec jekyll serve -w --incremental",
+    "webpack": "webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhashkarsharma/bhashkarsharma.github.io.git"
+  },
+  "keywords": [
+    "personal",
+    "site"
+  ],
+  "author": "bhashkarsharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bhashkarsharma/bhashkarsharma.github.io/issues"
+  },
+  "homepage": "https://github.com/bhashkarsharma/bhashkarsharma.github.io#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.0",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "axios": "^0.17.0",
+    "instafeed.js": "^1.4.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
