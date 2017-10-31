@@ -16,7 +16,7 @@ class Instagram extends React.Component {
             i.caption.text = i.caption.text.replace(/#(\S*)/g,'<a href="https://instagram.com/explore/tags/$1">#$1</a>');
         });
         this.setState({ posts: data });
-        console.log(resp.data.data); });
+    });
   }
 
   getText(post) {
