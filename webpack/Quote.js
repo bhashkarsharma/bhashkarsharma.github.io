@@ -8,7 +8,7 @@ class Quote extends React.Component {
   }
 
   componentDidMount() {
-    const url = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
+    const url = 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
     axios.get(url)
     .then(resp => this.setState({ quote: resp.data[0] }));
   }
