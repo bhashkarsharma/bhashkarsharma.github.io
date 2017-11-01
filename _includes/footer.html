@@ -1,5 +1,6 @@
 <footer>
     <section class="quote">
+        <div id="bulb"><a id="themeswitcher" href="javascript:switchTheme()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a></div>
         <div id="quote"></div>
     </section>
     <section class="links">
@@ -10,3 +11,13 @@
         <a href="mailto:info@bhashkar.me" class="icon fa-envelope"></a>
     </section>
 </footer>
+<script>
+    function switchTheme() {
+        var switcher = document.querySelector('#themeswitcher');
+        var stylesheet = document.querySelector('#sitetheme');
+        var currTheme = stylesheet.href.includes('day') ? 'day' : 'night';
+        var newTheme = stylesheet.href.includes('day') ? 'night' : 'day';
+        var newHref = stylesheet.href.replace(currTheme, newTheme);
+        stylesheet.href = newHref;
+    }
+</script>

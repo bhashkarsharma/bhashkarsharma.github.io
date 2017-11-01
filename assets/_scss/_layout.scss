@@ -15,15 +15,24 @@ header {
 
     a {
         border: none;
+    }
+
+    .masthead {
+        display: block;
         font-size: 4em;
+        text-align: center;
     }
 
     nav {
         ul {
             font-family: Monaco, Menlo, "Courier New", Courier, monospace;
-            font-size: 0.25em;
             list-style-type: none;
             padding: 0;
+
+            li {
+                display: inline-block;
+                margin-right: 10px;
+            }
         }
     }
 }
@@ -43,6 +52,10 @@ footer {
         color: #8e8e8e;
         margin: 1em;
         text-align: center;
+
+        a {
+            border: none;
+        }
 
         .fa {
             color: #ccc;
@@ -128,7 +141,7 @@ twitterwidget {
 .index {
     .insta-holder {
         column-count: 5;
-        column-gap: 0px;
+        column-gap: 5px;
 
         a {
             border: 0;
@@ -137,10 +150,6 @@ twitterwidget {
         .insta-item {
             display: inline-block;
             position: relative;
-
-            img {
-                
-            }
 
             .meta {
                 height: 100%;
@@ -155,13 +164,9 @@ twitterwidget {
                     opacity: 1;
                 }
 
-                .username {
-    
-                }
-
                 .likes {
                     display: block;
-                    font-size: 1.5em;
+                    font-size: 1.25em;
                     margin: 100px auto 0;
                     text-align: center;
                 }
@@ -177,7 +182,6 @@ twitterwidget {
 }
 
 .blog {
-
     .post-list {
         list-style-type: none;
         padding-left: 0;

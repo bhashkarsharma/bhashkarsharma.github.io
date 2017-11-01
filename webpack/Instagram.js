@@ -33,7 +33,7 @@ class Instagram extends React.Component {
                         <img src={i.images.low_resolution.url} />
                         <div className="meta">
                             <span className="likes">
-                                <i className="fa fa-heart" aria-hidden="true"></i> {i.likes.count}
+                                <i className="fa fa-heart" aria-hidden="true"></i> {i.likes.count} <i className="fa fa-comment" aria-hidden="true"></i> {i.comments.count}
                             </span>
                             <span className="caption" dangerouslySetInnerHTML={this.getText(i)}></span>
                         </div>
