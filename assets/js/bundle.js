@@ -21956,7 +21956,7 @@ var Quote = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var url = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
+      var url = 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
       _axios2.default.get(url).then(function (resp) {
         return _this2.setState({ quote: resp.data[0] });
       });
