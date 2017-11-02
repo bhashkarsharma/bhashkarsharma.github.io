@@ -11,23 +11,33 @@
         {% include footer.html %}
         <script>
             (function() {
-                var routes = [];
-                {% for post in site.posts %}routes.push('{{post.url}}');{% endfor %}
-                var frags = window.location.pathname.split('/');
-                frags.shift();
+                var redirects = [
+                    []
+                ];
+                var filtered = redirects.filter(function(i) {
+                    i[0] === window.location.pathname;
+                });
+                if (filtered.length > 0) window.location = filtered[0][1];
+            })();
+            (function() {
+                // var routes = [];
+                // {% for post in site.posts %}routes.push('{{post.url}}');{% endfor %}
+                // var frags = window.location.pathname.split('/');
+                // frags.shift();
+                // console.log(frags);
                 // strip /blog from post url
-                if (frags.indexOf('blog') > -1 && frags.length > 2) {
-                    var newUrl = window.location.pathname.replace('/blog', '');
-                    if (routes.indexOf(newUrl) > -1) {
-                        window.location = newUrl;
-                    } else {
-                        routes.forEach(function(e) {
-                            if (e.indexOf(frags[frags.length-2]) > -1) {
-                                window.location = e;
-                            }
-                        });
-                    }
-                }
+                // if (frags.indexOf('blog') > -1 && frags.length > 2) {
+                //     var newUrl = window.location.pathname.replace('/blog', '');
+                //     if (routes.indexOf(newUrl) > -1) {
+                //         window.location = newUrl;
+                //     } else {
+                //         routes.forEach(function(e) {
+                //             if (e.indexOf(frags[frags.length-2]) > -1) {
+                //                 window.location = e;
+                //             }
+                //         });
+                //     }
+                // }
             })();
         </script>
     </body>
