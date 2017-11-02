@@ -1,7 +1,7 @@
 ---
 title: Attachment
 date: 2014/06/09 21:10:40
-image: "/images/posts/bubble.jpg"
+image: "/assets/images/posts/bubble.jpg"
 comments: true
 ---
 

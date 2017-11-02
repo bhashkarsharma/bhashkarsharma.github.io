@@ -1,7 +1,7 @@
 ---
 title: The Fault In Our Stars
 date: 2017/06/27 18:30:00
-image: "/images/posts/astrology.jpg"
+image: "/assets/images/posts/astrology.jpg"
 comments: true
 tags: superstition, logic, astrology
 ---

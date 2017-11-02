@@ -7,7 +7,7 @@ tags: technology, future
 
 On reading [this article](http://www.bloombergview.com/articles/2014-02-28/tesla-is-a-car-not-a-revolution), many things come to mind; and not just how it screams "sensationalism" and "nay-sayer" out loud.<span class="more"></span>
 
-![Stunning, indeed!](http://www.bloomberg.com/image/iUVPBRrLZNPg.jpg)
+![Stunning, indeed!](/assets/images/posts/musk.jpg)
 
 > Musk is headed for a "stunning fail" - Edward Niedermeyer.
 

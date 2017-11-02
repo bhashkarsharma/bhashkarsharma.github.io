@@ -1,7 +1,7 @@
 ---
 title: Perversion
 date: 2014/05/13 09:10:40
-image: "/images/posts/people-devices.jpg"
+image: "/assets/images/posts/people-devices.jpg"
 image-credit: "https://secure.flickr.com/photos/waagsociety/"
 comments: true
 ---

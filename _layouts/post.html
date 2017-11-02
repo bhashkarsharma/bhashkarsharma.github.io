@@ -1,6 +1,21 @@
 ---
 layout: base
 ---
+<progress id="scrollPos" value="0"></progress>
+{% if page.image %}
+<style>
+header {
+    background-attachment: fixed;
+    background-image: url('{{ page.image }}');
+    background-position: center;
+    background-size: cover;
+    min-height: 300px;
+}
+header .masthead, header nav {
+    background: white;
+}
+</style>
+{% endif %}
 <div class="post">
     <h1 class="post-title">{{ page.title }}</h1>
     {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
@@ -10,3 +25,17 @@ layout: base
     </div>
     {% include disqus.html %}
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var progress = document.getElementById('scrollPos');
+    var windowHeight = window.innerHeight;
+    var body = document.body, html = document.documentElement;
+    var bodyHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    var maxHeight = bodyHeight - windowHeight;
+    progress.max = maxHeight;
+
+    window.onscroll = function(event) {
+        progress.value = window.pageYOffset;
+    }
+});
+</script>

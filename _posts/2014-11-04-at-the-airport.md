@@ -1,7 +1,7 @@
 ---
 title: At The Airport
 date: 2014/11/04 15:10:00
-image: "/images/posts/airplane.jpg"
+image: "/assets/images/posts/airplane.jpg"
 image-credit: "https://www.flickr.com/photos/125167502@N02/"
 comments: true
 ---

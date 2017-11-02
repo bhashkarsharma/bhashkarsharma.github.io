@@ -1,18 +1,18 @@
 ---
 title: Chrome Autofill and Payment Gateways
 date: 2016/03/31 09:00:00
-image: "/images/posts/credit-card.jpg"
+image: "/assets/images/posts/credit-card.jpg"
 comments: true
 ---
 Google Chrome has an autofill option which comes in very handy while entering personal details like email, name, address etc.<span class="more"></span> Lately, they have added a Credit Card option that allows you to autofill your card details.
 
 You can find it in `Settings > Show advanced settings > Passwords and Forms > Manage Autofill settings > Credit cards`. Or you can go to `chrome://settings/autofill`.
 
-![](/images/posts/card-autofill.jpg)
+![](/assets/images/posts/card-autofill.jpg)
 
 When you add a card for the first time, a reversible temporary transaction is generated on the card to ensure its validity. The card also gets added to your Google account, and shows up on your Google Payments page.
 
-![](/images/posts/card-wallet.jpg)
+![](/assets/images/posts/card-wallet.jpg)
 
 I've been using this feature for a while and it is pretty useful. All you need to do is enter your CVV number when prompted by the browser.
 

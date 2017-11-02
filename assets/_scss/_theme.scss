@@ -3,10 +3,13 @@ body {
     color: $body_color;
 }
 
+progress {
+    color: $progress_color;
+}
+
 a {
    color: $link_color;
    border-color: $link_color_light;
-   transition: all 0.5s;
 
     &:hover {
         color: $link_hover_color;
