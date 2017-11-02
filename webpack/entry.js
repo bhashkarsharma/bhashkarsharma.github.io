@@ -10,7 +10,10 @@ class QuoteApp extends React.Component {
     )
   }
 }
-render(<QuoteApp />, document.getElementById('quote'));
+
+if (document.getElementById('quote')) {
+  render(<QuoteApp />, document.getElementById('quote'));
+}
 
 class IndexApp extends React.Component {
   render() {
@@ -19,4 +22,7 @@ class IndexApp extends React.Component {
     )
   }
 }
-render(<IndexApp />, document.getElementById('insta-box'));
+
+if (document.getElementById('insta-box')) {
+  render(<IndexApp />, document.getElementById('insta-box'));
+}

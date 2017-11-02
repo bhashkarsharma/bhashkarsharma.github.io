@@ -1688,7 +1688,9 @@ var QuoteApp = function (_React$Component) {
   return QuoteApp;
 }(_react2.default.Component);
 
-(0, _reactDom.render)(_react2.default.createElement(QuoteApp, null), document.getElementById('quote'));
+if (document.getElementById('quote')) {
+  (0, _reactDom.render)(_react2.default.createElement(QuoteApp, null), document.getElementById('quote'));
+}
 
 var IndexApp = function (_React$Component2) {
   _inherits(IndexApp, _React$Component2);
@@ -1709,7 +1711,9 @@ var IndexApp = function (_React$Component2) {
   return IndexApp;
 }(_react2.default.Component);
 
-(0, _reactDom.render)(_react2.default.createElement(IndexApp, null), document.getElementById('insta-box'));
+if (document.getElementById('insta-box')) {
+  (0, _reactDom.render)(_react2.default.createElement(IndexApp, null), document.getElementById('insta-box'));
+}
 
 /***/ }),
 /* 24 */

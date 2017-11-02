@@ -8,12 +8,19 @@ defaults:
 
 parentsite: https://www.bhashkar.me
 permalink: /blog/:title/
+
+collections:
+  lists:
+    output: true
+    
+
 plugins:
   - 'jekyll-paginate'
   - 'jekyll-sitemap'
   - 'jekyll-gist'
   - 'jekyll-feed'
   - 'jemoji'
+  - 'jekyll-redirect-from'
 
 exclude: 
   - 'config.rb'

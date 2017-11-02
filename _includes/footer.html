@@ -8,27 +8,9 @@
         <a href="https://linkedin.com/in/bhashkarsharma" class="icon fa-linkedin"></a>
         <a href="https://github.com/bhashkarsharma" class="icon fa-github"></a>
         <a href="https://instagram.com/bhashkarsharma" class="icon fa-instagram"></a>
-        <a href="mailto:info@bhashkar.me" class="icon fa-envelope"></a>
+        <a href="http://www.google.com/recaptcha/mailhide/d?k=01SDx7taNN6zHr16t_7ptUow==&c=9O4_ghKVlCH-WzZa1rp7YEyR4f9inkxWAIK9q55KjYs=" class="icon fa-envelope"></a>
     </section>
     <section class="copyright">&copy; {{ 'now' | date: "%Y" }} Bhashkar Sharma</section>
 </footer>
-<script>
-    var cookieName = 'theme';
-    var expires = new Date(Date.now() + 7 * 864e5).toUTCString();
-    function switchTheme(theme) {
-        var switcher = document.querySelector('#themeswitcher');
-        var stylesheet = document.querySelector('#sitetheme');
-        var currTheme = stylesheet.href.includes('day') ? 'day' : 'night';
-        var newTheme = theme ? theme : (stylesheet.href.includes('day') ? 'night' : 'day');
-        var newHref = stylesheet.href.replace(currTheme, newTheme);
-        stylesheet.href = newHref;
-        document.cookie = cookieName + '=' + encodeURIComponent(newTheme) + '; expires=' + expires + '; path=/';
-    }
-    (function() {
-        var theme = document.cookie.split('; ').reduce(function(k, v) {
-            var parts = v.split('=');
-            return parts[0] === cookieName ? decodeURIComponent(parts[1]) : k;
-        }, '');
-        if (theme.length > 0) switchTheme(theme);
-    })();
-</script>
+<script src="{{ '/assets/js/base.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+<script src="{{ '/assets/js/bundle.js?v=' | append: site.github.build_revision | relative_url }}"></script>
