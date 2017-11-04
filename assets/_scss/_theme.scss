@@ -1,73 +1,73 @@
-body {
+body.#{$body_class} {
     background-color: $body_bg;
     color: $body_color;
-}
 
-progress {
-    color: $progress_color;
-}
-
-a {
-   color: $link_color;
-   border-color: $link_color_light;
-
-    &:hover {
-        color: $link_hover_color;
-        border-color: $link_color;
+    progress {
+        color: $progress_color;
     }
-}
 
-footer {
-    .quote {
-        color: $light_text_color;
-        
-        .fa {
+    a {
+        color: $link_color;
+        border-color: $link_color_light;
+
+        &:hover {
+            color: $link_hover_color;
+            border-color: $link_color;
+        }
+    }
+
+    footer {
+        .quote {
+            color: $light_text_color;
+            
+            .fa {
+                color: $light_text_color;
+            }
+        }
+
+        .copyright {
             color: $light_text_color;
         }
     }
 
-    .copyright {
-        color: $light_text_color;
-    }
-}
+    .index {
+        .insta-holder {
+            a {
+                color: white;
+            }
+            .insta-item {
+                .meta {
+                    color: $body_bg;
 
-.index {
-    .insta-holder {
-        a {
-            color: white;
-        }
-        .insta-item {
-            .meta {
-                color: $body_bg;
-
-                &:hover {
-                    background: rgba($link_hover_color, 0.8);
+                    &:hover {
+                        background: rgba($link_hover_color, 0.8);
+                    }
                 }
             }
         }
     }
-}
 
-.blog {
+    .blog {
 
-    .post-list {
+        .post-list {
 
-        li {
+            li {
 
-            .post-meta {
-                color: $light_text_color;
+                .post-meta {
+                    color: $light_text_color;
+                }
             }
         }
     }
-}
 
-.post {
-    .post-meta {
-        color: $light_text_color;
-    }
+    .post {
+        .post-meta {
+            color: $light_text_color;
+        }
 
-    blockquote {
-        background-color: $light_bg_color;
-        border-color: $link_color;
+        blockquote {
+            background-color: $light_bg_color;
+            border-color: $link_color;
+        }
     }
 }
