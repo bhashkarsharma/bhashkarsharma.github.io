@@ -4,6 +4,6 @@ rvm:
 branches:
   only:
     - master
-install: gem install rake && gem install github-pages && gem install s3_website && gem install jekyll && gem install therubyracer && gem install nokogiri
+install: gem install rake github-pages s3_website jekyll therubyracer nokogiri
 script: jekyll build
 after_success: s3_website push
