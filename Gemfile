@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-gem 'jekyll', '>=3.6.2'
+gem 'github-pages', group: :jekyll_plugins
+gem 'jekyll'
 gem 'nokogiri'
 gem 's3_website'
 gem 'therubyracer'
