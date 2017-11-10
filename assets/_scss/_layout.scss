@@ -24,10 +24,6 @@ progress {
     &::-webkit-progress-bar {
         background-color: transparent;
     }
-
-    &::-webkit-progress-value {
-        background-color: red;
-    }
 }
 
 a {
@@ -67,6 +63,10 @@ header {
                 display: inline-block;
                 margin-right: 10px;
                 padding: 5px;
+
+                &:first-child {
+                    margin-left: 10px;
+                }
             }
         }
     }

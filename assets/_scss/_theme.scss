@@ -4,6 +4,10 @@ body.#{$body_class} {
 
     progress {
         color: $progress_color;
+
+        &::-webkit-progress-value {
+            background-color: $progress_color;
+        }
     }
 
     a {
@@ -13,6 +17,12 @@ body.#{$body_class} {
         &:hover {
             color: $link_hover_color;
             border-color: $link_color;
+        }
+    }
+
+    header {
+        .masthead, nav {
+            background: $body_bg;
         }
     }
 
