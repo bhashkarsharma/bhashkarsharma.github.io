@@ -2,27 +2,16 @@ import React from 'react';
 import {render} from 'react-dom';
 import Quote from './Quote';
 import Instagram from './Instagram';
-
-class QuoteApp extends React.Component {
-  render() {
-    return (
-      <Quote />
-    )
-  }
-}
+import Helvetica from './lab/Helvetica/Helvetica';
 
 if (document.getElementById('quote')) {
-  render(<QuoteApp />, document.getElementById('quote'));
-}
-
-class IndexApp extends React.Component {
-  render() {
-    return (
-      <Instagram />
-    )
-  }
+  render(<Quote />, document.getElementById('quote'));
 }
 
 if (document.getElementById('insta-box')) {
-  render(<IndexApp />, document.getElementById('insta-box'));
+  render(<Instagram />, document.getElementById('insta-box'));
+}
+
+if (document.getElementById('helvetica')) {
+  render(<Helvetica />, document.getElementById('helvetica'));
 }

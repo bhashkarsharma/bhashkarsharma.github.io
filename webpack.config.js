@@ -7,6 +7,7 @@ module.exports = {
         path: path.resolve(__dirname, 'assets/js/'),
         filename: "bundle.js"
     },
+    // devtool: 'source-map',
     module: {
       rules: [
         {
@@ -16,6 +17,10 @@ module.exports = {
           query: {
             presets: ['react', 'env']
           }
+        },
+        {
+          test: /\.scss$/,
+          loader: ['style-loader', 'css-loader', 'sass-loader']
         }
       ]
     }

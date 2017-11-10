@@ -12,7 +12,8 @@ permalink: /blog/:title/
 collections:
   lists:
     output: true
-    
+  lab:
+    output: true
 
 plugins:
   - 'jekyll-paginate'
