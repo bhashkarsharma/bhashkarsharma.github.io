@@ -14,7 +14,7 @@ resp = requests.get(CONTENT_URL)
 if resp.status_code == 200:
     filename = os.path.join(os.path.dirname(__file__), '..', 'assets', 'posts.json')
     with open(filename, 'w') as f:
-        f.write(json.dumps(resp.json()))
+        f.write(json.dumps(resp.json(), indent=4))
         f.close()
     print 'Done.'
 else:
