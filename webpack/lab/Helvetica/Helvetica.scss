@@ -7,14 +7,6 @@
             height: 2em;
             text-align: center;
             width: 2em;
-
-            &.on {
-                color: #DDD;
-            }
-
-            &.off {
-                color: #808080;
-            }
         }
     }
 }
@@ -45,5 +37,33 @@
         font-size: 1em;
         height: 1.2em;
         width: 1.2em;
+    }
+}
+
+.day {
+    .helvetica-clock {
+        .item {
+            &.on {
+                color: #808080;
+            }
+            
+            &.off {
+                color: #DDD;
+            }
+        }
+    }
+}
+
+.night {
+    .helvetica-clock {
+        .item {
+            &.on {
+                color: #DDD;
+            }
+
+            &.off {
+                color: #808080;
+            }
+        }
     }
 }
