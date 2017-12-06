@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - "2.1.1"
+  - 2.1.1
 branches:
   only:
     - master
@@ -10,3 +10,6 @@ before_install:
 install: gem install rake github-pages s3_website jekyll therubyracer nokogiri
 script: jekyll build
 after_success: s3_website push
+env:
+  global:
+    secure: ff1yJP8fv5m5TdCgYia6tTMMF4Aheaz/0Wj++XQ2BDPET8SYKNs5Fb7x5+vwEW6tgqW4/HcpECND7Hj4JHV7NUxNrEqffj4iDwSDxSA2LS446/9O6Lf+Ox9O4u+IKR8sfkiZ1Uxws5dVlYRWnCMJmIi2kH5SWqPLue2fKedrclMKm6SaCIOCZHrzcrHASkjiFfqFdg0NWd8RanXbr/PcKqiD7oDUDeyM5PArJMLd8ViGNGtPpQqe1O+VAw3qDe9vWeEgxq9MX3lfyjICRsA1PaKh2jc4audTVBgbpF75N5g88Epfw2AqCHlz+r1AZefPRQmtTDvX9TFRMbv7WWiiy2qJail9vNAmYAFo7FAMQZqiJOjq1wO3ddauB6+C80ZouSWNI1HROEJhzUKKjXo3MV0pmNYfa+u054QVy/EuWgSnDevj0sMikCoJ73ryis6MTAJaWbh0+M0xyyNAQ3TmYGWPFcrd0KGb8Q4ZdxD58Kmh4+4MnBdsfhDfmQQBPdYOLZtWsHq6TbeHceWXzKEmWLk0C4+PAJ21SyTHT6b7CNfHvgF/NMFq+Jh+seRLaPbI4DEaMuX2HbOd3p3I1AkUR6ZpaA6fpWxqRp0g9sw1Agk3l8sEl+rfi4JfBNuw8kAwyudVzn82kcD0loXMEJL7q5BXJNzvDniQVynLBTZ3ekA=
