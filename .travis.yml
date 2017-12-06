@@ -4,6 +4,9 @@ rvm:
 branches:
   only:
     - master
+before_install:
+  - gem update --system 2.7.0
+  - gem --version
 install: gem install rake github-pages s3_website jekyll therubyracer nokogiri
 script: jekyll build
 after_success: s3_website push
