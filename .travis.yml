@@ -5,7 +5,7 @@ branches:
   only:
     - master
 install: gem install rake github-pages s3_website jekyll therubyracer nokogiri
-script: jekyll build
+script: JEKYLL_ENV=production jekyll build
 after_success: s3_website push
 env:
   global:
