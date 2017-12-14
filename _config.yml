@@ -30,6 +30,7 @@ exclude:
   - 'package-lock.json'
   - 'node_modules'
   - 'scripts'
+  - 'vendor'
   - 'webpack'
 
 theme: jekyll-theme-minimal
