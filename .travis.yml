@@ -4,7 +4,7 @@ rvm:
 branches:
   only:
     - master
-install: gem install jekyll s3_website
+install: gem install github-pages s3_website
 script: jekyll build
 after_success: s3_website push
 env:
