@@ -4,7 +4,11 @@ branches:
   only:
     - master
 before_install:
-  - git clone https://github.com/bhashkarsharma/posts
+  - COPYLOC=`pwd`
+  - cd ~ && git clone https://github.com/bhashkarsharma/posts && cd posts
+  - cp -r posts/* $COPYLOC/_posts
+  - cp -r imgs/* $COPYLOC/assets/images/posts/*
+  - cd $COPYLOC
   - rvm default
   - nvm install 6.10.2
   - nvm use 6.10.2
