@@ -5,3 +5,4 @@ package-lock.json
 _site/
 node_modules/
 scripts/conf*
+assets/js/bundle.js
