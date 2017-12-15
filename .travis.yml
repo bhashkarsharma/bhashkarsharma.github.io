@@ -5,7 +5,10 @@ branches:
     - master
 before_install:
   - COPYLOC=`pwd`
+  - echo $COPYLOC
   - cd ~ && git clone https://github.com/bhashkarsharma/posts && cd posts
+  - pwd
+  - ls -la
   - cp -r posts/* $COPYLOC/_posts
   - cp -r imgs/* $COPYLOC/assets/images/posts/*
   - cd $COPYLOC
