@@ -8,9 +8,8 @@ before_install:
   - echo $COPYLOC
   - cd ~ && git clone https://github.com/bhashkarsharma/posts && cd posts
   - pwd
-  - ls -la
   - cp -r posts/* $COPYLOC/_posts
-  - cp -r imgs/* $COPYLOC/assets/images/posts/*
+  - cp -r imgs/* $COPYLOC/assets/images/posts
   - cd $COPYLOC
   - rvm default
   - nvm install 6.10.2
