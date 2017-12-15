@@ -1,17 +1,19 @@
-matrix:
-  include:
-    - language: ruby
-      rvm: 2.1.1
-      install: gem install github-pages s3_website
-      script: jekyll build
-    - language: python
-      python: 2.7
-      install: pip install -r requirements.txt
-      script: python scripts/insta_feed.py
-    - language: node_js
-      node_js: lts/*
-      install: npm install
-      script: webpack --config webpack.config.js
+language: python
+python: 2.7
+branches:
+  only:
+    - master
+before_install:
+  - rvm install 2.1.1
+  - nvm install 6.10.2
+  - nvm use 6.10.2
+install:
+  - gem install github-pages s3_website
+  - pip install -r requirements.txt
+  - . $HOME/.nvm/nvm.sh
+  - npm install
+  - gem install github-pages s3_website
+script: npm run build
 branches:
   only:
     - master
