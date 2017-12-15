@@ -11,7 +11,7 @@ before_install:
 install:
   - gem install github-pages s3_website
   - pip install -r requirements.txt
-  - npm install --only=prod
+  - npm install
 script: npm run build
 branches:
   only:
