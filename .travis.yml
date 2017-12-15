@@ -4,15 +4,14 @@ branches:
   only:
     - master
 before_install:
-  - rvm install 2.1.1
+  - rvm install 2.4.1
+  - . $HOME/.nvm/nvm.sh
   - nvm install 6.10.2
   - nvm use 6.10.2
 install:
   - gem install github-pages s3_website
   - pip install -r requirements.txt
-  - . $HOME/.nvm/nvm.sh
   - npm install
-  - gem install github-pages s3_website
 script: npm run build
 branches:
   only:
