@@ -9,7 +9,10 @@ matrix:
 branches:
   only:
     - master
-install: gem install github-pages s3_website
+install:
+  - gem install github-pages s3_website
+  - pip install -r requirements.txt
+  - npm install
 script: npm run build
 after_success: s3_website push
 env:
