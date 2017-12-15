@@ -2,18 +2,15 @@ matrix:
   include:
     - language: ruby
       rvm: 2.1.1
-      install: gem install github-pages s3_website
-      script: echo 'Ruby Done'
     - language: python
       python: 2.7
-      script: echo 'Python Done'
     - language: node_js
       node_js: lts/*
-      before_script: npm install
-      script: npm run build
 branches:
   only:
     - master
+install: gem install github-pages s3_website
+script: npm run build
 after_success: s3_website push
 env:
   global:
