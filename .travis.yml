@@ -8,7 +8,9 @@ before_install:
   - echo $COPYLOC
   - cd ~ && git clone https://github.com/bhashkarsharma/posts && cd posts
   - pwd
+  - mkdir $COPYLOC/_posts
   - cp -r posts/* $COPYLOC/_posts
+  - mkdir $COPYLOC/assets/images/posts
   - cp -r imgs/* $COPYLOC/assets/images/posts
   - cd $COPYLOC
   - rvm default

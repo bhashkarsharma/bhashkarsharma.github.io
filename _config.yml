@@ -32,6 +32,10 @@ exclude:
   - 'scripts'
   - 'vendor'
   - 'webpack'
+  - 'Gemfile'
+  - 'requirements.txt'
+  - 's3_website.yml'
+  - 'webpack.config.js'
 
 theme: jekyll-theme-minimal
 sass:
