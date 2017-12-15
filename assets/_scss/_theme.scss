@@ -43,7 +43,7 @@ body.#{$body_class} {
     .index {
         .insta-holder {
             a {
-                color: white;
+                color: $body_bg;
             }
             .insta-item {
                 .meta {
