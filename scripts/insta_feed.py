@@ -1,14 +1,16 @@
 import os
 import json
 import requests
-import conf
 
-TOKEN_URL  = 'https://www.instagram.com/oauth/authorize/?'
-TOKEN_URL += 'client_id=' + conf.CLIENT_ID
-TOKEN_URL += '&redirect_uri=' + conf.REDIR_URL
-TOKEN_URL += '&response_type=token'
+# TOKEN_URL  = 'https://www.instagram.com/oauth/authorize/?'
+# TOKEN_URL += 'client_id=' + conf.CLIENT_ID
+# TOKEN_URL += '&redirect_uri=' + conf.REDIR_URL
+# TOKEN_URL += '&response_type=token'
 
-CONTENT_URL = 'https://api.instagram.com/v1/users/' + conf.USER_ID + '/media/recent/?access_token=' + conf.ACCESS_TOKEN
+USER_ID = os.environ['INSTA_ID']
+ACCESS_TOKEN = os.environ['INSTA_TOKEN']
+
+CONTENT_URL = 'https://api.instagram.com/v1/users/' + USER_ID + '/media/recent/?access_token=' + ACCESS_TOKEN
 
 resp = requests.get(CONTENT_URL)
 if resp.status_code == 200:
@@ -16,6 +18,6 @@ if resp.status_code == 200:
     with open(filename, 'w') as f:
         f.write(json.dumps(resp.json(), indent=4))
         f.close()
-    print 'Done.'
+    print 'Successfully fetched Instagram posts.'
 else:
     print resp.status_code
