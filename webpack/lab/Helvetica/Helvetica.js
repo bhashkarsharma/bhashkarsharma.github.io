@@ -20,8 +20,7 @@ class Helvetica extends React.Component {
       this.state = {
         blink: labels.map(i => Array.from(i).map(j => 0)),
         labelArr: labels.map(i => Array.from(i)),
-        labels: labels,
-        // time: ''
+        labels: labels
       };
       this.tick = this.tick.bind(this);
     }
@@ -102,7 +101,6 @@ class Helvetica extends React.Component {
       const timeString = this.getTimeString();
       this.setState({
         blink: this.getBlinkState(this.state.labels, timeString)
-        // time: timeString.join(' ')
       });
       const date = new Date();
     }

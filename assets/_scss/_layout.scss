@@ -6,7 +6,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: all 0.5s;
 }
 
 progress {
@@ -29,7 +28,6 @@ progress {
 a {
     border-bottom: 3px solid;
     text-decoration: none;
-    transition: all 0.5s;
 }
 
 header {
