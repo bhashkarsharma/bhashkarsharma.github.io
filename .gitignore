@@ -6,3 +6,4 @@ _site/
 node_modules/
 scripts/conf*
 assets/js/bundle.js
+assets/posts.json
