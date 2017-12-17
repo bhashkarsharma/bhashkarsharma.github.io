@@ -23,6 +23,7 @@ class Card extends React.Component {
 class SetGame extends React.Component {
     constructor() {
         super();
+        window.switchTheme('day');
         const colors = ['red', 'blue', 'green'];
         const count = [1, 2, 3];
         const shapes = ['round', 'square', 'triangle'];
@@ -63,11 +64,16 @@ class SetGame extends React.Component {
 
     checkSet(a, b, c) {
         const props = ['color', 'count', 'fill', 'shape'];
+        let matchCount = 0;
         props.forEach(i => {
             const s = new Set([a[i], b[i], c[i]]);
-            if ([1, 3].indexOf(s.size) > -1) return this.win([a, b, c]);
+            if ([1, 3].indexOf(s.size) > -1) matchCount++;
         });
-        return false;
+        if (matchCount === 2) {
+            return this.win([a, b, c]);
+        } else {
+            return false;
+        }
     }
 
     win(arr) {
@@ -110,6 +116,7 @@ class SetGame extends React.Component {
         if (clicked.length === 3) {
             this.checkSet(...clicked);
             this.setState({ clicked: [] });
+            hand.forEach(j => j.clicked = false);
         }
     }
 
