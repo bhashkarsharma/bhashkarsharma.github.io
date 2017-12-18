@@ -149,7 +149,6 @@ class SetGame extends React.Component {
         this.getCombinations(hand).forEach(i => {
             const arr = i.map(j => hand[j]);
             if (this.checkSet(...arr)) {
-                console.log(i);
                 c++;
             }
         });
