@@ -1,14 +1,16 @@
 var cookieName = 'theme';
 var expires = new Date(Date.now() + 7 * 864e5).toUTCString();
 
-function switchTheme(theme) {
+function switchTheme(theme, persist=true) {
     var switcher = document.querySelector('#themeswitcher');
     var body = document.body;
     var currTheme = body.classList.contains('day') ? 'day' : 'night';
     var newTheme = theme ? theme : (currTheme === 'day' ? 'night' : 'day');
     body.classList.remove(currTheme);
     body.classList.add(newTheme);
-    document.cookie = cookieName + '=' + encodeURIComponent(newTheme) + '; expires=' + expires + '; path=/';
+    if (persist) {
+        document.cookie = cookieName + '=' + encodeURIComponent(newTheme) + '; expires=' + expires + '; path=/';
+    }
 }
 
 (function() {

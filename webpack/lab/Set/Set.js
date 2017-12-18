@@ -23,7 +23,7 @@ class Card extends React.Component {
 class SetGame extends React.Component {
     constructor() {
         super();
-        window.switchTheme('day');
+        window.switchTheme('day', false);
         const colors = ['red', 'blue', 'green'];
         const count = [1, 2, 3];
         const shapes = ['round', 'square', 'triangle'];
