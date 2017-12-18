@@ -44,7 +44,7 @@ class SetGame extends React.Component {
         
         this.state = {
             deck,
-            hand: deck.splice(0, 12),
+            hand: deck.splice(0, 16),
             clicked: [],
             score: 0
         };
@@ -69,7 +69,7 @@ class SetGame extends React.Component {
             const s = new Set([a[i], b[i], c[i]]);
             if ([1, 3].indexOf(s.size) > -1) matchCount++;
         });
-        if (matchCount === 2) {
+        if (matchCount === 4) {
             return this.win([a, b, c]);
         } else {
             return false;
@@ -89,10 +89,13 @@ class SetGame extends React.Component {
             });
         });
         idx.forEach(i => {
-            const item = deck.splice(0, 1);
-            hand[i] = item[0];
+            if (deck.length > 0) {
+                hand[i] = deck.splice(0, 1)[0];
+            } else {
+                hand.splice(i, 1);
+            }
         });
-        score++;
+        score += 10;
         this.setState({
             deck,
             hand,
@@ -128,8 +131,19 @@ class SetGame extends React.Component {
                         return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
                     })
                 }
-                <div className="score">Your score: {this.state.score}</div>
-                <div className="score">Cards remaining: {this.state.deck.length}</div>
+                <div className="score">
+                    <div>Your score: {this.state.score}</div>
+                    <div>Cards remaining: {this.state.deck.length}</div>
+                </div>
+                <div className="rules">
+                    <div>Select three cards. They should satisfy all of the following conditions:</div>
+                    <ol>
+                        <li>Same color OR all different colors</li>
+                        <li>Same fill OR all different fills</li>
+                        <li>Same shape OR all different shapes</li>
+                        <li>Same number of items OR all different number of items</li>
+                    </ol>
+                </div>
             </div>
         )
     }

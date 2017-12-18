@@ -5,16 +5,20 @@ $colors: $red $blue $green;
 $icon_size: 20px;
 $icon_inner_diff: 6px;
 
+.content {
+    padding: 1em;
+}
+
 .set {
     .card {
         border: 1px solid;
         border-radius: 5px;
         display: inline-block;
         height: 100px;
-        margin: 10px;
+        margin: 5px;
         padding: 10px;
         text-align: center;
-        width: 80px;
+        width: 75px;
 
         .icon {
             margin: 5px auto;
@@ -33,7 +37,7 @@ $icon_inner_diff: 6px;
             border-width: 2px;
             border-radius: $icon_size/2;
             height: $icon_size;
-            width: $icon_size;
+            width: $icon_size * 3/2;
         }
 
         .triangle {
@@ -112,7 +116,26 @@ $icon_inner_diff: 6px;
     }
     .score {
         font-weight: bold;
-        text-align: center;
+
+        div {
+            display: inline-block;
+            width: 50%;
+
+            &:nth-child(1) {
+                text-align: left;
+            }
+            
+            &:nth-child(2) {
+                text-align: right;
+            }
+        }
+    }
+    .rules {
+        border: 1px dashed #CCC;
+        color: #CCC;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 10px;
     }
 }
 
