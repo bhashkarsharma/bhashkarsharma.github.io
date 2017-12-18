@@ -128,13 +128,13 @@ class SetGame extends React.Component {
 
     setVisualState(cards, success) {
         const hand = this.state.hand;
-        const class = success ? 'success' : 'error';
+        const visualClass = success ? 'success' : 'error';
         const idx = [];
         cards.forEach(i => {
             hand.forEach((j, k) => {
                 if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
                     idx.push(k);
-                    hand[k].visual = class;
+                    hand[k].visual = visualClass;
                 }
             });
         });
