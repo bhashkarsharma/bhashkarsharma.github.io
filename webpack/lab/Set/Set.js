@@ -9,7 +9,9 @@ class Card extends React.Component {
 
     render() {
         return (
-            <div className={`card ${this.props.conf.color} ${this.props.conf.clicked ? 'clicked' : '' }`} onClick={this.props.onClick}>
+            <div
+                className={`card ${this.props.conf.color} ${this.props.conf.clicked ? 'clicked' : ''} ${this.props.conf.visual}`}
+                onClick={this.props.onClick}>
             {
                 Array.from(Array(this.props.conf.count).keys()).map((i, k) => {
                     return <div className={`icon ${this.props.conf.fill} ${this.props.conf.shape}`} key={k}></div>
@@ -34,7 +36,7 @@ class SetGame extends React.Component {
             count.forEach(count => {
                 shapes.forEach(shape => {
                     fills.forEach(fill => {
-                        deck.push({ color, count, shape, fill, clicked: false });
+                        deck.push({ color, count, shape, fill, clicked: false, visual: '' });
                     });
                 });
             });
@@ -69,18 +71,14 @@ class SetGame extends React.Component {
             const s = new Set([a[i], b[i], c[i]]);
             if ([1, 3].indexOf(s.size) > -1) matchCount++;
         });
-        if (matchCount === 4) {
-            return this.win([a, b, c]);
-        } else {
-            return false;
-        }
+        return matchCount === 4;
     }
 
     win(arr) {
         let deck = this.state.deck;
         let hand = this.state.hand;
         let score = this.state.score;
-        let idx = [];
+        const idx = [];
         arr.forEach(i => {
             hand.forEach((j, k) => {
                 if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
@@ -117,10 +115,34 @@ class SetGame extends React.Component {
             }
         });
         if (clicked.length === 3) {
-            this.checkSet(...clicked);
+            if (this.checkSet(...clicked)) {
+                this.setVisualState(clicked, true);
+                this.win([a, b, c]);
+            } else {
+                this.setVisualState(clicked, false);
+            }
             this.setState({ clicked: [] });
             hand.forEach(j => j.clicked = false);
         }
+    }
+
+    setVisualState(cards, success) {
+        const hand = this.state.hand;
+        const class = success ? 'success' : 'error';
+        const idx = [];
+        cards.forEach(i => {
+            hand.forEach((j, k) => {
+                if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
+                    idx.push(k);
+                    hand[k].visual = class;
+                }
+            });
+        });
+        setTimeout(() => {
+            idx.forEach(i => {
+                hand[i].visual = '';
+            });
+        }, 2000);
     }
 
     render() {
@@ -136,7 +158,7 @@ class SetGame extends React.Component {
                     <div>Cards remaining: {this.state.deck.length}</div>
                 </div>
                 <div className="rules">
-                    <div>Select three cards. They should satisfy all of the following conditions:</div>
+                    <div>Select three cards. They must satisfy ALL of the following conditions:</div>
                     <ol>
                         <li>Same color OR all different colors</li>
                         <li>Same fill OR all different fills</li>
