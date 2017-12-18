@@ -117,7 +117,7 @@ class SetGame extends React.Component {
         if (clicked.length === 3) {
             if (this.checkSet(...clicked)) {
                 this.setVisualState(clicked, true);
-                this.win([a, b, c]);
+                this.win(clicked);
             } else {
                 this.setVisualState(clicked, false);
             }
