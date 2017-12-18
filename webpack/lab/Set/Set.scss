@@ -122,6 +122,10 @@ $icon_inner_diff: 6px;
     }
     .score {
         font-weight: bold;
+        text-align: center;
+    }
+    .stats {
+        font-weight: bold;
 
         div {
             display: inline-block;
@@ -136,7 +140,7 @@ $icon_inner_diff: 6px;
             }
         }
     }
-    .rules {
+    .instructions {
         border: 1px dashed #999;
         color: #999;
         font-style: italic;

@@ -48,7 +48,8 @@ class SetGame extends React.Component {
             deck,
             hand: deck.splice(0, 16),
             clicked: [],
-            score: 0
+            score: 0,
+            possible: 0
         };
     }
 
@@ -103,11 +104,12 @@ class SetGame extends React.Component {
 
     cardClick(i, e) {
         const hand = this.state.hand;
+        this.getCombinations(hand);
         let clicked = this.state.clicked;
         clicked.push(i);
         clicked = [...new Set(clicked)];
         this.setState({
-            clicked
+            clicked, possible: this.getPossibleSets(hand)
         })
         hand.forEach((j, k) => {
             if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
@@ -115,13 +117,7 @@ class SetGame extends React.Component {
             }
         });
         if (clicked.length === 3) {
-            if (this.checkSet(...clicked)) {
-                this.setVisualState(clicked, true);
-                this.win(clicked);
-            } else {
-                this.setVisualState(clicked, false);
-            }
-            this.setState({ clicked: [] });
+            this.setVisualState(clicked, this.checkSet(...clicked));
             hand.forEach(j => j.clicked = false);
         }
     }
@@ -142,7 +138,35 @@ class SetGame extends React.Component {
             idx.forEach(i => {
                 hand[i].visual = '';
             });
-        }, 2000);
+            this.setState({ hand, clicked: [] });
+            if (success) this.win(cards);
+        }, 1000);
+    }
+
+    getPossibleSets() {
+        const hand = this.state.hand;
+        let c = 0;
+        this.getCombinations(hand).forEach(i => {
+            const arr = i.map(j => hand[j]);
+            if (this.checkSet(...arr)) {
+                console.log(i);
+                c++;
+            }
+        });
+        return c;
+    }
+
+    getCombinations(arr) {
+        const l = arr.length;
+        let idx = [];
+        for (let i=0; i<l-2; i++) {
+            for (let j=i+1; j<l-1; j++) {
+                for (let k=j+1; k<l; k++) {
+                    idx.push([i, j, k]);
+                }
+            }
+        }
+        return idx;
     }
 
     render() {
@@ -155,9 +179,12 @@ class SetGame extends React.Component {
                 }
                 <div className="score">
                     <div>Your score: {this.state.score}</div>
+                </div>
+                <div className="stats">
+                    <div>Possible sets: {this.state.possible}</div>
                     <div>Cards remaining: {this.state.deck.length}</div>
                 </div>
-                <div className="rules">
+                <div className="instructions">
                     <div>Select three cards. They must satisfy ALL of the following conditions:</div>
                     <ol>
                         <li>Same color OR all different colors</li>
