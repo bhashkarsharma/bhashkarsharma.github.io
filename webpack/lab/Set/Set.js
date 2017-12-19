@@ -185,16 +185,18 @@ class SetGame extends React.Component {
     showHint() {
         const hand = this.state.hand;
         const hint = this.state.hint;
+        let score = this.state.score;
         if (hint.length > 0) {
             hint.forEach(i => {
                 if (!hand[i].clicked) {
                     hand[i].visual = 'hint';
                 }
             });
+            score -= 5;
         } else {
             hand.forEach(i => i.visual = '');
         }
-        this.setState({ hand });
+        this.setState({ hand, score });
         setTimeout(() => {
             hint.forEach(i => {
                 hand[i].visual = '';
