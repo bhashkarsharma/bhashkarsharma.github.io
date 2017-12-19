@@ -191,8 +191,10 @@ class SetGame extends React.Component {
                     hand[i].visual = 'hint';
                 }
             });
-            this.setState({ hand });
+        } else {
+            hand.forEach(i => i.visual = '');
         }
+        this.setState({ hand });
         setTimeout(() => {
             hint.forEach(i => {
                 hand[i].visual = '';
