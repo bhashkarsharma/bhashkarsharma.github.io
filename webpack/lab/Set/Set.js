@@ -134,6 +134,7 @@ class SetGame extends React.Component {
     setVisualState(cards, success) {
         const hand = this.state.hand;
         const visualClass = success ? 'success' : 'error';
+        const timeOut = success ? 2000 : 1000;
         const idx = [];
         cards.forEach(i => {
             hand.forEach((j, k) => {
@@ -151,7 +152,7 @@ class SetGame extends React.Component {
             });
             this.setState({ hand, clicked: [] });
             if (success) this.win(cards);
-        }, 1000);
+        }, timeOut);
     }
 
     getPossibleSets() {
@@ -229,6 +230,10 @@ class SetGame extends React.Component {
                         <li>Same shape OR all different shapes</li>
                         <li>Same number of items OR all different number of items</li>
                     </ol>
+                    <div>Scoring:</div>
+                    <ol>
+                        <li>Each correct match: +10</li>
+                        <li>Each hint: -5</li>
                 </div>
             </div>
         )
