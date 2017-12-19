@@ -234,6 +234,7 @@ class SetGame extends React.Component {
                     <ol>
                         <li>Each correct match: +10</li>
                         <li>Each hint: -5</li>
+                    </ol>
                 </div>
             </div>
         )

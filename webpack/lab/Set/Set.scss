@@ -1,7 +1,8 @@
-$red: red;//#E74C3C;
-$green: green;//#27AE60;
-$blue: blue;///#2980B9;
-$colors: $red $blue $green;
+$colors: (
+  red: #E74C3C,
+  green: #27AE60,
+  blue: #2980B9
+);
 $icon_size: 20px;
 $icon_inner_diff: 6px;
 
@@ -110,20 +111,20 @@ $icon_inner_diff: 6px;
             box-shadow: 0px 0px 4px 2px #0077ff;
         }
     }
-    @each $color in $colors {
-        .card.#{$color} {
+    @each $name, $value in $colors {
+        .card.#{$name} {
             .square, .round {
-                border-color: #{$color};
+                border-color: #{$value};
 
                 &.filled {
-                    background-color: #{$color};
+                    background-color: #{$value};
                 }
 
                 &.shaded {
                     background: linear-gradient(
                         to bottom,
-                        #{$color},
-                        #{$color} 50%,
+                        #{$value},
+                        #{$value} 50%,
                         white 50%,
                         white
                     );
@@ -131,10 +132,10 @@ $icon_inner_diff: 6px;
             }
 
             .triangle {
-                border-bottom: $icon_size solid #{$color};
+                border-bottom: $icon_size solid #{$value};
 
                 &.shaded:after {
-                    border-bottom: $icon_size/2 solid #{$color};
+                    border-bottom: $icon_size/2 solid #{$value};
                 }
             }
         }
