@@ -90,6 +90,9 @@ $icon_inner_diff: 6px;
         &.error {
             box-shadow: 0px 0px 4px 2px #ff2f00;
         }
+        &.hint {
+            box-shadow: 0px 0px 4px 2px #0077ff;
+        }
     }
     @each $color in $colors {
         .card.#{$color} {

@@ -45,12 +45,20 @@ class SetGame extends React.Component {
         deck = this.shuffleArr(deck);
         
         this.state = {
+            clicked: [],
             deck,
             hand: deck.splice(0, 16),
-            clicked: [],
-            score: 0,
-            possible: 0
+            hint: [],
+            possible: 0,
+            score: 0
         };
+    }
+
+    componentDidMount() {
+        const hand = this.state.hand;
+        this.setState({
+            possible: this.getPossibleSets(hand)
+        });
     }
 
     shuffleArr(a) {
@@ -98,6 +106,7 @@ class SetGame extends React.Component {
         this.setState({
             deck,
             hand,
+            possible: this.getPossibleSets(hand),
             score
         });
     }
@@ -109,7 +118,7 @@ class SetGame extends React.Component {
         clicked.push(i);
         clicked = [...new Set(clicked)];
         this.setState({
-            clicked, possible: this.getPossibleSets(hand)
+            clicked
         })
         hand.forEach((j, k) => {
             if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
@@ -128,12 +137,14 @@ class SetGame extends React.Component {
         const idx = [];
         cards.forEach(i => {
             hand.forEach((j, k) => {
-                if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
+                if (i.color === j.color && i.count === j.count 
+                    && i.fill === j.fill && i.shape === j.shape) {
                     idx.push(k);
                     hand[k].visual = visualClass;
                 }
             });
         });
+        this.setState({ hand });
         setTimeout(() => {
             idx.forEach(i => {
                 hand[i].visual = '';
@@ -149,6 +160,9 @@ class SetGame extends React.Component {
         this.getCombinations(hand).forEach(i => {
             const arr = i.map(j => hand[j]);
             if (this.checkSet(...arr)) {
+                if (c === 0) {
+                    this.setState({ hint: i });
+                }
                 c++;
             }
         });
@@ -168,9 +182,32 @@ class SetGame extends React.Component {
         return idx;
     }
 
+    showHint() {
+        const hand = this.state.hand;
+        const hint = this.state.hint;
+        if (hint.length > 0) {
+            hint.forEach(i => {
+                if (!hand[i].clicked) {
+                    hand[i].visual = 'hint';
+                }
+            });
+            this.setState({ hand });
+        }
+        setTimeout(() => {
+            hint.forEach(i => {
+                hand[i].visual = '';
+            });
+            this.setState({ hand });
+        }, 2000);
+    }
+
     render() {
         return (
             <div className="set">
+                <div className="stats">
+                    <div>Possible sets: {this.state.possible}</div>
+                    <div>Cards remaining: {this.state.deck.length}</div>
+                </div>
                 {
                     this.state.hand.map((i, k) => {
                         return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
@@ -179,10 +216,7 @@ class SetGame extends React.Component {
                 <div className="score">
                     <div>Your score: {this.state.score}</div>
                 </div>
-                <div className="stats">
-                    <div>Possible sets: {this.state.possible}</div>
-                    <div>Cards remaining: {this.state.deck.length}</div>
-                </div>
+                <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>Need a hint?</a>
                 <div className="instructions">
                     <div>Select three cards. They must satisfy ALL of the following conditions:</div>
                     <ol>
