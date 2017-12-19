@@ -9,8 +9,22 @@ $icon_inner_diff: 6px;
     padding: 1em;
 }
 
+@keyframes zoominout {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.05, 1.05);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+
 .set {
     .card {
+        background-color: white;
         border: 1px solid;
         border-radius: 5px;
         display: inline-block;
@@ -18,6 +32,7 @@ $icon_inner_diff: 6px;
         margin: 5px;
         padding: 10px;
         text-align: center;
+        transition: all .2s ease-in-out;
         width: 21%;
 
         .icon {
@@ -85,6 +100,7 @@ $icon_inner_diff: 6px;
             box-shadow: 0px 0px 4px 2px #000000;
         }
         &.success {
+            animation: zoominout 1s infinite;
             box-shadow: 0px 0px 4px 2px #00ff00;
         }
         &.error {
