@@ -1,26 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import style from './Set.scss';
-
-class Card extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div
-                className={`card ${this.props.conf.color} ${this.props.conf.clicked ? 'clicked' : ''} ${this.props.conf.visual}`}
-                onClick={this.props.onClick}>
-            {
-                Array.from(Array(this.props.conf.count).keys()).map((i, k) => {
-                    return <div className={`icon ${this.props.conf.fill} ${this.props.conf.shape}`} key={k}></div>
-                })
-            }
-            </div>
-        )
-    }
-}
+import Card from './Card';
 
 class SetGame extends React.Component {
     constructor() {
@@ -213,14 +194,21 @@ class SetGame extends React.Component {
                     <div>Possible sets: {this.state.possible}</div>
                     <div>Cards remaining: {this.state.deck.length}</div>
                 </div>
-                {
+                {this.state.possible > 0 ?
                     this.state.hand.map((i, k) => {
                         return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
-                    })
+                    }) :
+                    <div className="final-stats">
+                        <div>Game Over</div>
+                        <div>Score: {this.state.score}</div>
+                        {/* <div>Time taken: </div> */}
+                    </div>
                 }
-                <div className="score">
-                    <div>Your score: {this.state.score}</div>
-                </div>
+                {this.state.possible > 0 &&
+                    <div className="score">
+                        <div>Your score: {this.state.score}</div>
+                    </div>
+                }
                 <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>Need a hint?</a>
                 <div className="instructions">
                     <div>Select three cards. They must satisfy ALL of the following conditions:</div>

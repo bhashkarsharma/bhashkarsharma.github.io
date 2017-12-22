@@ -1,0 +1,137 @@
+$colors: (
+    red: #E74C3C,
+    green: #27AE60,
+    blue: #2980B9
+);
+$icon_size: 20px;
+$icon_inner_diff: 6px;
+
+@keyframes zoominout {
+    0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.05, 1.05);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.card {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    display: inline-block;
+    height: 100px;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+    transition: all .2s ease-in-out;
+    width: 21%;
+
+    .icon {
+        margin: 5px auto;
+        position: relative;
+    }
+
+    .square {
+        border-style: solid;
+        border-width: 2px;
+        height: $icon_size;
+        width: $icon_size;
+    }
+
+    .round {
+        border-style: solid;
+        border-width: 2px;
+        border-radius: $icon_size/2;
+        height: $icon_size;
+        width: $icon_size * 3/2;
+    }
+
+    .triangle {
+        border-left: $icon_size/2 solid transparent;
+        border-right: $icon_size/2 solid transparent;
+        height: 0;
+        width: 0;
+
+        &.empty:after {
+            content: '';
+            border-left: ($icon_size - $icon_inner_diff)/2 solid transparent;
+            border-right: ($icon_size - $icon_inner_diff)/2 solid transparent;
+            border-bottom: ($icon_size - $icon_inner_diff) solid white;
+            height: 0; 
+            left: -($icon_inner_diff + 1);
+            position: absolute;
+            top: ($icon_inner_diff/2) + 1;
+            width: 0;
+        }
+
+        &.shaded:before {
+            content: '';
+            border-left: ($icon_size - $icon_inner_diff)/2 solid transparent;
+            border-right: ($icon_size - $icon_inner_diff)/2 solid transparent;
+            border-bottom: ($icon_size - $icon_inner_diff) solid white;
+            height: 0; 
+            left: -($icon_inner_diff + 1);
+            position: absolute;
+            top: ($icon_inner_diff/2) + 1;
+            width: 0;
+        }
+
+        &.shaded:after {
+            content: '';
+            border-left: ($icon_size - $icon_inner_diff)/2 solid transparent;
+            border-right: ($icon_size - $icon_inner_diff)/2 solid transparent;
+            height: 0; 
+            left: -($icon_inner_diff + 1);
+            position: absolute;
+            top: ($icon_inner_diff/2) + 1;
+            width: 0;
+        }
+    }
+    &.clicked {
+        box-shadow: 0px 0px 4px 2px #000000;
+    }
+    &.success {
+        animation: zoominout 1s infinite;
+        box-shadow: 0px 0px 4px 2px #00ff00;
+    }
+    &.error {
+        box-shadow: 0px 0px 4px 2px #ff2f00;
+    }
+    &.hint {
+        box-shadow: 0px 0px 4px 2px #0077ff;
+    }
+}
+@each $name, $value in $colors {
+    .card.#{$name} {
+        .square, .round {
+            border-color: #{$value};
+
+            &.filled {
+                background-color: #{$value};
+            }
+
+            &.shaded {
+                background: linear-gradient(
+                    to bottom,
+                    #{$value},
+                    #{$value} 50%,
+                    white 50%,
+                    white
+                );
+            }
+        }
+
+        .triangle {
+            border-bottom: $icon_size solid #{$value};
+
+            &.shaded:after {
+                border-bottom: $icon_size/2 solid #{$value};
+            }
+        }
+    }
+} 
+  
