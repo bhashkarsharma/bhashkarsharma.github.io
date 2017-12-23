@@ -221,11 +221,13 @@ class SetGame extends React.Component {
     render() {
         return (
             <div className="set">
-                <div className="stats">
-                    <div>Possible sets: {this.state.possible}</div>
-                    <div>Cards remaining: {this.state.deck.length}</div>
-                    <progress className="gameTimer" value={this.state.availablePoints} max="10"></progress>
-                </div>
+                {this.state.possible > 0 &&
+                    <div className="stats">
+                        <div>Possible sets: {this.state.possible}</div>
+                        <div>Cards remaining: {this.state.deck.length}</div>
+                        <progress className="gameTimer" value={this.state.availablePoints} max="10"></progress>
+                    </div>
+                }
                 {this.state.possible > 0 ?
                     this.state.hand.map((i, k) => {
                         return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
