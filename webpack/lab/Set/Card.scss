@@ -1,8 +1,23 @@
-$colors: (
+$icon_colors: (
     red: #E74C3C,
     green: #27AE60,
     blue: #2980B9
 );
+
+$highlight_day: (
+    clicked: #333333,
+    success: #00ff00,
+    error: #ff2f00,
+    hint: #0077ff
+);
+
+$highlight_night: (
+    clicked: #FFFFFF,
+    success: #66ff66,
+    error: #ff6666,
+    hint: #99ccff
+);
+
 $icon_size: 20px;
 $icon_inner_diff: 6px;
 
@@ -19,16 +34,19 @@ $icon_inner_diff: 6px;
 }
 
 .card {
-    background-color: white;
-    border: 1px solid;
-    border-radius: 5px;
     display: inline-block;
-    height: 100px;
-    margin: 5px;
-    padding: 10px;
-    text-align: center;
-    transition: all .2s ease-in-out;
-    width: 21%;
+    width: 25%;
+    
+    .inner {
+        background-color: white;
+        border: 1px solid;
+        border-radius: 5px;
+        height: 100px;
+        margin: 5px;
+        padding: 10px;
+        text-align: center;
+        transition: all .2s ease-in-out;
+    }
 
     .icon {
         margin: 5px auto;
@@ -91,47 +109,61 @@ $icon_inner_diff: 6px;
             width: 0;
         }
     }
-    &.clicked {
-        box-shadow: 0px 0px 4px 2px #000000;
-    }
-    &.success {
-        animation: zoominout 1s infinite;
-        box-shadow: 0px 0px 4px 2px #00ff00;
-    }
-    &.error {
-        box-shadow: 0px 0px 4px 2px #ff2f00;
-    }
-    &.hint {
-        box-shadow: 0px 0px 4px 2px #0077ff;
-    }
 }
-@each $name, $value in $colors {
-    .card.#{$name} {
-        .square, .round {
-            border-color: #{$value};
+@each $name, $value in $icon_colors {
+    .card {
+        .inner.#{$name} {
+            .square, .round {
+                border-color: #{$value};
 
-            &.filled {
-                background-color: #{$value};
+                &.filled {
+                    background-color: #{$value};
+                }
+
+                &.shaded {
+                    background: linear-gradient(
+                        to bottom,
+                        #{$value},
+                        #{$value} 50%,
+                        white 50%,
+                        white
+                    );
+                }
             }
 
-            &.shaded {
-                background: linear-gradient(
-                    to bottom,
-                    #{$value},
-                    #{$value} 50%,
-                    white 50%,
-                    white
-                );
-            }
-        }
+            .triangle {
+                border-bottom: $icon_size solid #{$value};
 
-        .triangle {
-            border-bottom: $icon_size solid #{$value};
-
-            &.shaded:after {
-                border-bottom: $icon_size/2 solid #{$value};
+                &.shaded:after {
+                    border-bottom: $icon_size/2 solid #{$value};
+                }
             }
         }
     }
 } 
-  
+
+@mixin highlight_colors($theme) {
+    .card .inner {
+        &.clicked {
+            box-shadow: 0px 0px 4px 4px #{map-get($theme, clicked)};
+        }
+        &.success {
+            animation: zoominout 1s infinite;
+            box-shadow: 0px 0px 4px 4px #{map-get($theme, success)};
+        }
+        &.error {
+            box-shadow: 0px 0px 4px 4px #{map-get($theme, error)};
+        }
+        &.hint {
+            box-shadow: 0px 0px 4px 4px #{map-get($theme, hint)};
+        }
+    }
+}
+
+.day {
+    @include highlight_colors($highlight_day);
+}
+
+.night {
+    @include highlight_colors($highlight_night);
+}

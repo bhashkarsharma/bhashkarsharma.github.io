@@ -3,7 +3,6 @@
 }
 
 .set {
-    background: white;
     padding: 20px;
 
     .final-stats {
@@ -32,6 +31,10 @@
             &:nth-child(2) {
                 text-align: right;
             }
+        }
+
+        .gameTimer {
+            width: 100%;
         }
     }
 

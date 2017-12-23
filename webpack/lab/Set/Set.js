@@ -6,7 +6,6 @@ import Card from './Card';
 class SetGame extends React.Component {
     constructor() {
         super();
-        window.switchTheme('day', false);
         const colors = ['red', 'blue', 'green'];
         const count = [1, 2, 3];
         const shapes = ['round', 'square', 'triangle'];
@@ -26,20 +25,34 @@ class SetGame extends React.Component {
         deck = this.shuffleArr(deck);
         
         this.state = {
+            availablePoints: 0,
             clicked: [],
             deck,
+            endTime: 0,
             hand: deck.splice(0, 16),
-            hint: [],
+            hints: [],
+            lastWin: 0,
             possible: 0,
-            score: 0
+            score: 0,
+            startTime: 0,
+            visualOn: false
         };
     }
 
     componentDidMount() {
         const hand = this.state.hand;
         this.setState({
-            possible: this.getPossibleSets(hand)
+            lastWin: new Date(),
+            possible: this.getPossibleSets(hand),
+            startTime: new Date()
         });
+        this.interval = setInterval(() => {
+            this.calculateAvailablePoints();
+        }, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     shuffleArr(a) {
@@ -71,7 +84,8 @@ class SetGame extends React.Component {
         const idx = [];
         arr.forEach(i => {
             hand.forEach((j, k) => {
-                if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
+                if (i.color === j.color && i.count === j.count
+                    && i.fill === j.fill && i.shape === j.shape) {
                     idx.push(k);
                 }
             });
@@ -83,32 +97,35 @@ class SetGame extends React.Component {
                 hand.splice(i, 1);
             }
         });
-        score += 10;
+        score += this.state.availablePoints;
         this.setState({
             deck,
+            endTime: new Date(),
             hand,
+            lastWin: new Date(),
             possible: this.getPossibleSets(hand),
             score
         });
     }
 
+    calculateAvailablePoints() {
+        const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 10);
+        const availablePoints = Math.max(1, 10 - Math.floor(sec/5));
+        this.setState({ availablePoints });
+    }
+
     cardClick(i, e) {
         const hand = this.state.hand;
         this.getCombinations(hand);
-        let clicked = this.state.clicked;
-        clicked.push(i);
-        clicked = [...new Set(clicked)];
-        this.setState({
-            clicked
-        })
         hand.forEach((j, k) => {
             if (i.color === j.color && i.count === j.count && i.fill === j.fill && i.shape === j.shape) {
                 j.clicked = !j.clicked;
             }
         });
+        const clicked = [...new Set(hand.filter(j => j.clicked === true))];
+        this.setState({ clicked, hand });
         if (clicked.length === 3) {
             this.setVisualState(clicked, this.checkSet(...clicked));
-            hand.forEach(j => j.clicked = false);
         }
     }
 
@@ -126,29 +143,30 @@ class SetGame extends React.Component {
                 }
             });
         });
-        this.setState({ hand });
+        this.setState({ hand, visualOn: true });
         setTimeout(() => {
             idx.forEach(i => {
                 hand[i].visual = '';
             });
-            this.setState({ hand, clicked: [] });
-            if (success) this.win(cards);
+            hand.forEach(j => j.clicked = false);
+            this.setState({ hand, clicked: [], visualOn: false });
+            if (success) {
+                this.win(cards);
+            }
         }, timeOut);
     }
 
     getPossibleSets() {
         const hand = this.state.hand;
-        let c = 0;
+        const hints = [];
         this.getCombinations(hand).forEach(i => {
             const arr = i.map(j => hand[j]);
             if (this.checkSet(...arr)) {
-                if (c === 0) {
-                    this.setState({ hint: i });
-                }
-                c++;
+                hints.push(i);
             }
         });
-        return c;
+        this.setState({ hints });
+        return hints.length;
     }
 
     getCombinations(arr) {
@@ -166,7 +184,7 @@ class SetGame extends React.Component {
 
     showHint() {
         const hand = this.state.hand;
-        const hint = this.state.hint;
+        const hint = this.state.hints[Math.floor(Math.random() * this.state.hints.length)];
         let score = this.state.score;
         if (hint.length > 0) {
             hint.forEach(i => {
@@ -187,12 +205,26 @@ class SetGame extends React.Component {
         }, 2000);
     }
 
+    showTime() {
+        let timeDiff = Math.floor((this.state.endTime - this.state.startTime) / 1000);
+        const sec = timeDiff % 60;
+        timeDiff -= sec;
+        timeDiff /= 60;
+        const mins = timeDiff % 60;
+        timeDiff -= mins;
+        timeDiff /= 60;
+        return `${timeDiff ? timeDiff + ' hours' : '' }\
+                    ${mins ? ' ' + mins + ' min' : ''}\
+                    ${sec ? ' ' + sec + ' sec' : '' }`;
+    }
+
     render() {
         return (
             <div className="set">
                 <div className="stats">
                     <div>Possible sets: {this.state.possible}</div>
                     <div>Cards remaining: {this.state.deck.length}</div>
+                    <progress className="gameTimer" value={this.state.availablePoints} max="10"></progress>
                 </div>
                 {this.state.possible > 0 ?
                     this.state.hand.map((i, k) => {
@@ -201,15 +233,17 @@ class SetGame extends React.Component {
                     <div className="final-stats">
                         <div>Game Over</div>
                         <div>Score: {this.state.score}</div>
-                        {/* <div>Time taken: </div> */}
+                        <div>Time Taken: {this.showTime()}</div>
                     </div>
                 }
                 {this.state.possible > 0 &&
-                    <div className="score">
-                        <div>Your score: {this.state.score}</div>
+                    <div>
+                        <div className="score">
+                            <div>Your score: {this.state.score}</div>
+                        </div>
+                        <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>Need a hint?</a>
                     </div>
                 }
-                <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>Need a hint?</a>
                 <div className="instructions">
                     <div>Select three cards. They must satisfy ALL of the following conditions:</div>
                     <ol>
