@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import style from './SetGame.scss';
-import Instructions from './Instructions';
-import Game from './Game';
+import Instructions from '../Instructions/Instructions';
+import Game from '../Game/Game';
 
 class SetGame extends React.Component {
     constructor() {

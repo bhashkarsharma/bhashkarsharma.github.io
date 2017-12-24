@@ -1,8 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import style from './Game.scss';
-import Card from './Card';
-import Instructions from './Instructions';
+import Card from '../Card/Card';
 
 /** 
  * Game states: 0 - finished, 1 - running
@@ -14,8 +13,8 @@ import Instructions from './Instructions';
 class Game extends React.Component {
     constructor(props) {
         super(props);
-        const colors = ['red', 'blue', 'green'];
-        const count = [1, 2, 3];
+        const colors = ['red'];//, 'blue', 'green'];
+        const count = [1];//, 2, 3];
         const shapes = ['round', 'square', 'triangle'];
         const fills = ['empty', 'shaded', 'filled'];
         let deck = [];
@@ -68,7 +67,7 @@ class Game extends React.Component {
             possible,
             startTime: new Date()
         });
-        
+
         if (this.props.timed) {
             this.interval = setInterval(() => {
                 this.calculateAvailablePoints();
