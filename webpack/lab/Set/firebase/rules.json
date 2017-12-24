@@ -1,0 +1,36 @@
+
+{
+    "rules": {
+      "leaderboard": {
+        ".read": true,
+        ".write": true,
+  
+        "highestScore": {
+          ".validate": "newData.isNumber()"
+        },
+  
+        "scoreList": {
+          "$name": {
+            ".validate": "newData.hasChildren(['name', 'score'])",
+  
+            "name": {
+              ".validate": "newData.isString()"
+            },
+  
+            "score": {
+              ".validate": "newData.isNumber()"
+            },
+  
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+  
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+  

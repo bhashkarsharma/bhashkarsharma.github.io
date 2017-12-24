@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import style from './SetGame.scss';
-import Instructions from '../Instructions/Instructions';
 import Game from '../Game/Game';
+import Instructions from '../Instructions/Instructions';
 
 class SetGame extends React.Component {
     constructor() {
@@ -49,7 +49,7 @@ class SetGame extends React.Component {
                             <button onClick={this.startGame.bind(this)}>Start Game</button>
                         </div>
                     </div> :
-                    <Game mode={this.state.mode} 
+                    <Game mode={this.state.mode}
                         timed={this.state.timed}
                         endGame={this.endGame.bind(this)}>
                     </Game>

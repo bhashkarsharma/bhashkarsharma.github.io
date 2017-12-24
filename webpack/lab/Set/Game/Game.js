@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import style from './Game.scss';
 import Card from '../Card/Card';
+import Leaderboard from '../Leaderboard/Leaderboard';
 
 /** 
  * Game states: 0 - finished, 1 - running
@@ -295,6 +296,7 @@ class Game extends React.Component {
                         <div>Game Over</div>
                         <div>Score: {this.state.score}</div>
                         {this.props.timed && <div>Time Taken: {this.showTime()}</div>}
+                        <Leaderboard score={this.state.score}></Leaderboard>
                         <div>
                             <button onClick={this.props.endGame}>New Game</button>
                         </div>

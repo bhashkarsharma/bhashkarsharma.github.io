@@ -1,0 +1,29 @@
+.leaderboard {
+    .scoreForm {
+
+        input {
+            color: #333;
+            line-height: 1.5em;
+            padding: 5px;
+        }
+
+        button {
+            font-size: 1em;
+            padding: 10px 15px;
+        }
+
+    }
+    .scoreboard {
+        border: 1px solid;
+        width: 100%;
+
+        thead {
+            border-bottom: 1px solid;
+        }
+        
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+    }
+}
