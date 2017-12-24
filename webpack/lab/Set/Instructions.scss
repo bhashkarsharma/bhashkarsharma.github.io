@@ -1,5 +1,4 @@
 .instructions {
-    border: 1px solid #999;
     color: #999;
     font-style: italic;
     margin: 10px 0;
@@ -10,8 +9,9 @@
         width: 100%;
 
         th, td {
-            padding: 5px;
             border: 1px solid;
+            padding: 5px;
+            text-align: center;
         }
     }
 }
