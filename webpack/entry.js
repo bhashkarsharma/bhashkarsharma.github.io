@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import Quote from './Quote';
 import Instagram from './Instagram';
 import Helvetica from './lab/Helvetica/Helvetica';
-import SetGame from './lab/Set/Set';
+import SetGame from './lab/Set/SetGame';
 
 if (document.getElementById('quote')) {
   render(<Quote />, document.getElementById('quote'));

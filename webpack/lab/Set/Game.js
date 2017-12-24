@@ -1,11 +1,19 @@
 import React from 'react';
 import {render} from 'react-dom';
-import style from './Set.scss';
+import style from './Game.scss';
 import Card from './Card';
+import Instructions from './Instructions';
 
-class SetGame extends React.Component {
-    constructor() {
-        super();
+/** 
+ * Game states: 0 - finished, 1 - running
+ * Modes: 0 - easy, 1 - medium
+ * DrawCount: 12 or 15
+ * Timed: True or False
+*/
+
+class Game extends React.Component {
+    constructor(props) {
+        super(props);
         const colors = ['red', 'blue', 'green'];
         const count = [1, 2, 3];
         const shapes = ['round', 'square', 'triangle'];
@@ -25,13 +33,15 @@ class SetGame extends React.Component {
         deck = this.shuffleArr(deck);
         
         this.state = {
-            availablePoints: 0,
+            availablePoints: 10,
             clicked: [],
             deck,
+            drawCount: 12,
             endTime: 0,
-            hand: deck.splice(0, 16),
+            hand: deck.splice(0, 12),
             hints: [],
             lastWin: 0,
+            mode: 1,
             possible: 0,
             score: 0,
             startTime: 0,
@@ -46,13 +56,17 @@ class SetGame extends React.Component {
             possible: this.getPossibleSets(hand),
             startTime: new Date()
         });
-        this.interval = setInterval(() => {
-            this.calculateAvailablePoints();
-        }, 1000);
+        if (this.props.timed) {
+            this.interval = setInterval(() => {
+                this.calculateAvailablePoints();
+            }, 1000);
+        }
     }
 
     componentWillUnmount() {
-        clearInterval(this.interval);
+        if (this.props.timed) {
+            clearInterval(this.interval);
+        }
     }
 
     shuffleArr(a) {
@@ -80,6 +94,7 @@ class SetGame extends React.Component {
     win(arr) {
         let deck = this.state.deck;
         let hand = this.state.hand;
+        let drawCount = this.state.drawCount;
         let score = this.state.score;
         const idx = [];
         arr.forEach(i => {
@@ -90,28 +105,44 @@ class SetGame extends React.Component {
                 }
             });
         });
-        idx.forEach(i => {
-            if (deck.length > 0) {
+        idx.reverse().forEach(i => {
+            if (deck.length > 0 && drawCount === 12) {
                 hand[i] = deck.splice(0, 1)[0];
             } else {
                 hand.splice(i, 1);
+                drawCount--;
             }
         });
         score += this.state.availablePoints;
+        let possible = this.getPossibleSets(hand);
+        if (possible === 0 && drawCount === 12) {
+            [0, 1, 2].forEach(i => {
+                if (deck.length > 0) {
+                    hand.push(deck.splice(0, 1)[0]);
+                    drawCount++;
+                }
+            });
+            possible = this.getPossibleSets(hand);
+        }
         this.setState({
             deck,
+            drawCount,
             endTime: new Date(),
             hand,
             lastWin: new Date(),
-            possible: this.getPossibleSets(hand),
+            possible,
             score
         });
     }
 
     calculateAvailablePoints() {
-        const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 10);
-        const availablePoints = Math.max(1, 10 - Math.floor(sec/5));
-        this.setState({ availablePoints });
+        if (this.props.timed) {
+            const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 10);
+            const availablePoints = 5 + Math.max(1, 10 - Math.floor(sec/5));
+            this.setState({ availablePoints });
+        } else {
+            this.setState({ availablePoints: 10 });
+        }
     }
 
     cardClick(i, e) {
@@ -186,7 +217,7 @@ class SetGame extends React.Component {
         const hand = this.state.hand;
         const hint = this.state.hints[Math.floor(Math.random() * this.state.hints.length)];
         let score = this.state.score;
-        if (hint.length > 0) {
+        if (hint) {
             hint.forEach(i => {
                 if (!hand[i].clicked) {
                     hand[i].visual = 'hint';
@@ -197,12 +228,14 @@ class SetGame extends React.Component {
             hand.forEach(i => i.visual = '');
         }
         this.setState({ hand, score });
-        setTimeout(() => {
-            hint.forEach(i => {
-                hand[i].visual = '';
-            });
-            this.setState({ hand });
-        }, 2000);
+        if (hint) {
+            setTimeout(() => {
+                hint.forEach(i => {
+                    hand[i].visual = '';
+                });
+                this.setState({ hand });
+            }, 2000);
+        }
     }
 
     showTime() {
@@ -221,47 +254,42 @@ class SetGame extends React.Component {
     render() {
         return (
             <div className="set">
-                {this.state.possible > 0 &&
+                {(this.state.deck.length > 0 || this.state.possible > 0) &&
                     <div className="stats">
-                        <div>Possible sets: {this.state.possible}</div>
-                        <div>Cards remaining: {this.state.deck.length}</div>
-                        <progress className="gameTimer" value={this.state.availablePoints} max="10"></progress>
+                        <div>
+                            <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>
+                                <i className="fa fa-question-circle" aria-hidden="true"></i>
+                            </a>
+                            {this.state.possible}
+                        </div>
+                        <div>
+                            <i className="fa fa-th" aria-hidden="true"></i>
+                            {this.state.deck.length}
+                        </div>
+                        <div>
+                            <i className="fa fa-gamepad" aria-hidden="true"></i>
+                            {this.state.score}
+                        </div>
+                        {this.props.timed && 
+                            <progress className="gameTimer" value={this.state.availablePoints} max="10"></progress>
+                        }
                     </div>
                 }
-                {this.state.possible > 0 ?
+                {(this.state.deck.length > 0 || this.state.possible > 0) ?
                     this.state.hand.map((i, k) => {
                         return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
                     }) :
                     <div className="final-stats">
                         <div>Game Over</div>
                         <div>Score: {this.state.score}</div>
-                        <div>Time Taken: {this.showTime()}</div>
-                    </div>
-                }
-                {this.state.possible > 0 &&
-                    <div>
-                        <div className="score">
-                            <div>Your score: {this.state.score}</div>
+                        {this.props.timed && <div>Time Taken: {this.showTime()}</div>}
+                        <div>
+                            <button onClick={this.props.endGame}>New Game</button>
                         </div>
-                        <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>Need a hint?</a>
                     </div>
                 }
-                <div className="instructions">
-                    <div>Select three cards. They must satisfy ALL of the following conditions:</div>
-                    <ol>
-                        <li>Same color OR all different colors</li>
-                        <li>Same fill OR all different fills</li>
-                        <li>Same shape OR all different shapes</li>
-                        <li>Same number of items OR all different number of items</li>
-                    </ol>
-                    <div>Scoring:</div>
-                    <ol>
-                        <li>Each correct match: +10</li>
-                        <li>Each hint: -5</li>
-                    </ol>
-                </div>
             </div>
         )
     }
 }
-export default SetGame;
+export default Game;

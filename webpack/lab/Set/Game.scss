@@ -1,0 +1,104 @@
+.content {
+    padding: 1em;
+}
+
+.set {
+    padding: 20px;
+
+    a {
+        border: 1px solid;
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    button {
+        border: 1px solid;
+        border-radius: 5px;
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .final-stats {
+        border: 1px solid;
+        height: 200px;
+        padding: 90px 10px;
+        text-align: center;
+    }
+
+    .score {
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .stats {
+        font-weight: bold;
+
+        &>div {
+            display: inline-block;
+            font-size: 1.2em;
+            width: 33.33%;
+
+            a {
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            i {
+                margin: 10px;
+            }
+            
+            &:nth-child(1) {
+                text-align: left;
+            }
+
+            &:nth-child(2) {
+                text-align: center;
+            }
+
+            &:nth-child(3) {
+                text-align: right;
+            }
+        }
+
+        .gameTimer {
+            width: 100%;
+        }
+    }
+}
+
+.day {
+    .set {
+        
+        a.chosen {
+            border-color: green;
+        }
+
+        button {
+            background-color: #CCC;
+            
+            &:hover {
+                background-color: #FFF;
+            }
+        }
+    }
+}
+
+.night {
+    .set {
+        
+        a.chosen {
+            border-color: #80ff80;;
+        }
+
+        button {
+            background-color: #333;
+            
+            &:hover {
+                background-color: #000;
+            }
+        }
+    }
+}
