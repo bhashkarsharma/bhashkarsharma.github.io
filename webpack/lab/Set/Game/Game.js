@@ -14,8 +14,8 @@ import Leaderboard from '../Leaderboard/Leaderboard';
 class Game extends React.Component {
     constructor(props) {
         super(props);
-        const colors = ['red'];//, 'blue', 'green'];
-        const count = [1];//, 2, 3];
+        const colors = ['red', 'blue', 'green'];
+        const count = [1, 2, 3];
         const shapes = ['round', 'square', 'triangle'];
         const fills = ['empty', 'shaded', 'filled'];
         let deck = [];
