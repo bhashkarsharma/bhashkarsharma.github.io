@@ -40,6 +40,7 @@ class Game extends React.Component {
             endTime: 0,
             hand: [],
             hints: [],
+            hintCount: 0,
             lastWin: 0,
             mode: 1,
             possible: 0,
@@ -242,7 +243,7 @@ class Game extends React.Component {
         } else {
             hand.forEach(i => i.visual = '');
         }
-        this.setState({ hand, score });
+        this.setState({ hand, score, hintCount: this.state.hintCount + 1 });
         if (hint) {
             setTimeout(() => {
                 hint.forEach(i => {
@@ -253,8 +254,13 @@ class Game extends React.Component {
         }
     }
 
+    timeTaken() {
+        return this.props.timed ? Math.floor((this.state.endTime - this.state.startTime) / 1000) : 0;
+    }
+
     showTime() {
-        let timeDiff = Math.floor((this.state.endTime - this.state.startTime) / 1000);
+        if (!this.props.timed) return '';
+        let timeDiff = this.timeTaken();
         const sec = timeDiff % 60;
         timeDiff -= sec;
         timeDiff /= 60;
@@ -298,7 +304,11 @@ class Game extends React.Component {
                         <div className="over">Game Over</div>
                         <div>Score: {this.state.score}</div>
                         {this.props.timed && <div>Time Taken: {this.showTime()}</div>}
-                        <Leaderboard score={this.state.score}></Leaderboard>
+                        <Leaderboard
+                            score={this.state.score}
+                            hints={this.state.hintCount}
+                            time={this.timeTaken()}>
+                        </Leaderboard>
                         <div>
                             <button onClick={this.props.endGame}>New Game</button>
                         </div>

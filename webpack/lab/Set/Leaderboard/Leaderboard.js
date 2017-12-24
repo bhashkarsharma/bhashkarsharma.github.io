@@ -26,9 +26,11 @@ class Leaderboard extends React.Component {
     saveScore() {
         const name = this.state.name;
         const score = this.props.score;
+        const hints = this.props.hints;
+        const time = this.props.time;
         if (name.length > 0) {
             const userScoreRef = this.scorelistRef.child(name);
-            userScoreRef.setWithPriority({ name, score }, score);
+            userScoreRef.setWithPriority({ name, score, hints, time }, score);
 
             this.highestScoreRef.transaction((currHigh) => {
                 if (currHigh === null || score > currHigh) {
@@ -70,12 +72,19 @@ class Leaderboard extends React.Component {
                             <tr>
                                 <th>User</th>
                                 <th>Score</th>
+                                <th>Time</th>
+                                <th>Hints</th>
                             </tr>
                         </thead>
                         <tbody>
                         {
                             this.state.top.map((i, k) => {
-                                return <tr key={k}><td>{i.name}</td><td>{i.score}</td></tr>;
+                                return <tr key={k}>
+                                    <td>{i.name}</td>
+                                    <td>{i.score}</td>
+                                    <td>{i.time ? i.time : '-'}</td>
+                                    <td>{i.hints ? i.hints : '-'}</td>
+                                </tr>;
                             })
                         }
                         </tbody>

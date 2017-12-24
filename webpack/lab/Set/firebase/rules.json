@@ -11,13 +11,21 @@
   
         "scoreList": {
           "$name": {
-            ".validate": "newData.hasChildren(['name', 'score'])",
+            ".validate": "newData.hasChildren(['name', 'score', 'time', 'hints'])",
   
             "name": {
               ".validate": "newData.isString()"
             },
   
             "score": {
+              ".validate": "newData.isNumber()"
+            },
+
+            "hints": {
+              ".validate": "newData.isNumber()"
+            },
+
+            "time": {
               ".validate": "newData.isNumber()"
             },
   
