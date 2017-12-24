@@ -38,12 +38,12 @@ class SetGame extends React.Component {
                         <div className="conf">
                             <div className="choice">Difficulty</div>
                             <a className={this.state.difficulty === 0 ? 'chosen' : ''} href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 0)}>Easy</a>
-                            <a className={this.state.difficulty === 1 ? 'chosen' : ''} href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 1)}>medium</a>
+                            <a className={this.state.difficulty === 1 ? 'chosen' : ''} href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 1)}>Medium</a>
                         </div>
                         <div className="conf">
                             <div className="choice">Mode</div>
-                            <a className={this.state.timed ? 'chosen' : ''} href="javascript:void(0)" onClick={this.timedClick.bind(this, true)}>Timed</a>
                             <a className={this.state.timed ? '' : 'chosen'} href="javascript:void(0)" onClick={this.timedClick.bind(this, false)}>Relaxed</a>
+                            <a className={this.state.timed ? 'chosen' : ''} href="javascript:void(0)" onClick={this.timedClick.bind(this, true)}>Timed</a>
                         </div>
                         <div>
                             <button onClick={this.startGame.bind(this)}>Start Game</button>
