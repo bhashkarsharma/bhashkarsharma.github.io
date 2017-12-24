@@ -13,10 +13,8 @@
   <meta name="author" content="{{ site.author.firstName }} {{ site.author.lastName }}">
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-  {% if jekyll.environment == 'production' %}
-    {% include ga.html %}
-  {% endif %}
-
+  {% include ga.html %}
+  
   <link rel="stylesheet" href="{{ '/assets/style.css?v=' | append: site.github.build_revision | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
