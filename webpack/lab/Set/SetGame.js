@@ -8,14 +8,14 @@ class SetGame extends React.Component {
     constructor() {
         super();
         this.state = {
-            mode: 1,
+            difficulty: 1,
             running: false,
             timed: false
         };
     }
 
-    modeClick(mode) {
-        this.setState({ mode });
+    difficultyClick(difficulty) {
+        this.setState({ difficulty });
     }
 
     timedClick(timed) {
@@ -36,9 +36,9 @@ class SetGame extends React.Component {
                 {!this.state.running ?
                     <div className="options">
                         {/* <div>
-                            <div>Mode</div>
-                            <a href="javascript:void(0)" onClick={this.modeClick.bind(this, 0)}>Easy</a>
-                            <a href="javascript:void(0)" onClick={this.modeClick.bind(this, 1)}>medium</a>
+                            <div>Difficulty</div>
+                            <a href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 0)}>Easy</a>
+                            <a href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 1)}>medium</a>
                         </div> */}
                         <div className="timed">
                             <div className="mode">Select Mode</div>

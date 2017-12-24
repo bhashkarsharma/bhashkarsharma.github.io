@@ -6,7 +6,7 @@ import Instructions from './Instructions';
 
 /** 
  * Game states: 0 - finished, 1 - running
- * Modes: 0 - easy, 1 - medium
+ * Difficulty: 0 - easy, 1 - medium
  * DrawCount: 12 or 15
  * Timed: True or False
 */
@@ -19,6 +19,7 @@ class Game extends React.Component {
         const shapes = ['round', 'square', 'triangle'];
         const fills = ['empty', 'shaded', 'filled'];
         let deck = [];
+        const drawCount = 12;
 
         colors.forEach(color => {
             count.forEach(count => {
@@ -30,15 +31,13 @@ class Game extends React.Component {
             });
         });
 
-        deck = this.shuffleArr(deck);
-        
         this.state = {
             availablePoints: 10,
             clicked: [],
             deck,
-            drawCount: 12,
+            drawCount,
             endTime: 0,
-            hand: deck.splice(0, 12),
+            hand: [],
             hints: [],
             lastWin: 0,
             mode: 1,
@@ -50,12 +49,26 @@ class Game extends React.Component {
     }
 
     componentDidMount() {
-        const hand = this.state.hand;
+        const drawCount = this.state.drawCount;
+        let deck = this.state.deck;
+        let hand = this.state.hand;
+        let possible = this.state.possible;
+        do {
+            deck = this.shuffleArr(deck);
+            hand = deck.slice(0, drawCount);
+            possible = this.getPossibleSets(hand);
+        } while (possible === 0);
+        
+        hand = deck.splice(0, drawCount);
+
         this.setState({
+            deck,
+            hand,
             lastWin: new Date(),
-            possible: this.getPossibleSets(hand),
+            possible,
             startTime: new Date()
         });
+        
         if (this.props.timed) {
             this.interval = setInterval(() => {
                 this.calculateAvailablePoints();
@@ -187,11 +200,11 @@ class Game extends React.Component {
         }, timeOut);
     }
 
-    getPossibleSets() {
-        const hand = this.state.hand;
+    getPossibleSets(hand) {
+        const cards = hand || this.state.hand;
         const hints = [];
-        this.getCombinations(hand).forEach(i => {
-            const arr = i.map(j => hand[j]);
+        this.getCombinations(cards).forEach(i => {
+            const arr = i.map(j => cards[j]);
             if (this.checkSet(...arr)) {
                 hints.push(i);
             }
