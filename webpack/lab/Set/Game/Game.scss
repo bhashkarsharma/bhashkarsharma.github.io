@@ -2,6 +2,18 @@
     padding: 1em;
 }
 
+@keyframes rainbow { 
+    0%{
+        background-position: 0% 82%;
+    }
+    50%{
+        background-position:100% 19%;
+    }
+    100%{
+        background-position:0% 82%;
+    }
+}
+
 .set {
     padding: 20px;
 
@@ -22,8 +34,16 @@
     }
 
     .final-stats {
+        animation: rainbow 18s ease infinite;
+        background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+        background-size: 1800% 1800%;
         padding: 90px 10px;
         text-align: center;
+
+        .over {
+            font-size: 2em;
+            font-weight: bold;
+        }
     }
 
     .score {

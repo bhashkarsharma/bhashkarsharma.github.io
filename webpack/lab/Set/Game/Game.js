@@ -293,7 +293,7 @@ class Game extends React.Component {
                         return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
                     }) :
                     <div className="final-stats">
-                        <div>Game Over</div>
+                        <div className="over">Game Over</div>
                         <div>Score: {this.state.score}</div>
                         {this.props.timed && <div>Time Taken: {this.showTime()}</div>}
                         <Leaderboard score={this.state.score}></Leaderboard>

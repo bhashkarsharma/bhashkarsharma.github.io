@@ -17,17 +17,6 @@ class Leaderboard extends React.Component {
         this.scoreDB = Fire.database().ref('leaderboard');
         this.scorelistRef = this.scoreDB.child('scoreList');
         this.highestScoreRef = this.scoreDB.child('highestScore');
-
-        const scoreList = this.scorelistRef.limitToLast(10);
-        scoreList.once('value', snap => {
-            const val = snap.val();
-            const top = [];
-            Object.keys(val).map(i => {
-                top.push(val[i]);
-            });
-            top.sort((a, b) => b.score - a.score);
-            this.setState({ top });
-        });
     }
 
     handleNameChange(event) {
