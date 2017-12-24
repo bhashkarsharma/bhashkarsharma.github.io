@@ -8,7 +8,7 @@ class SetGame extends React.Component {
     constructor() {
         super();
         this.state = {
-            difficulty: 1,
+            difficulty: 0,
             running: false,
             timed: false
         };
