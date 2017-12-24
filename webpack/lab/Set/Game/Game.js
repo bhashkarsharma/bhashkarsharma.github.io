@@ -15,11 +15,11 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         const colors = ['red', 'blue', 'green'];
-        const count = [1, 2, 3];
+        const count = props.difficulty === 1 ? [1, 2, 3] : [1];
         const shapes = ['round', 'square', 'triangle'];
         const fills = ['empty', 'shaded', 'filled'];
         let deck = [];
-        const drawCount = 12;
+        const drawCount = props.difficulty === 1 ?  12 : 9;
 
         colors.forEach(color => {
             count.forEach(count => {
@@ -36,6 +36,7 @@ class Game extends React.Component {
             clicked: [],
             deck,
             drawCount,
+            drawSize: drawCount,
             endTime: 0,
             hand: [],
             hints: [],
@@ -108,6 +109,7 @@ class Game extends React.Component {
         let deck = this.state.deck;
         let hand = this.state.hand;
         let drawCount = this.state.drawCount;
+        const drawSize = this.state.drawSize;
         let score = this.state.score;
         const idx = [];
         arr.forEach(i => {
@@ -119,7 +121,7 @@ class Game extends React.Component {
             });
         });
         idx.reverse().forEach(i => {
-            if (deck.length > 0 && drawCount === 12) {
+            if (deck.length > 0 && drawCount === drawSize) {
                 hand[i] = deck.splice(0, 1)[0];
             } else {
                 hand.splice(i, 1);
@@ -128,7 +130,7 @@ class Game extends React.Component {
         });
         score += this.state.availablePoints;
         let possible = this.getPossibleSets(hand);
-        if (possible === 0 && drawCount === 12) {
+        if (possible === 0 && drawCount === drawSize) {
             [0, 1, 2].forEach(i => {
                 if (deck.length > 0) {
                     hand.push(deck.splice(0, 1)[0]);

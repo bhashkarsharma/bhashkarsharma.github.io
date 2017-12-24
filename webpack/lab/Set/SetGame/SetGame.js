@@ -35,13 +35,13 @@ class SetGame extends React.Component {
             <div className="set">
                 {!this.state.running ?
                     <div className="options">
-                        {/* <div>
-                            <div>Difficulty</div>
-                            <a href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 0)}>Easy</a>
-                            <a href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 1)}>medium</a>
-                        </div> */}
-                        <div className="timed">
-                            <div className="mode">Select Mode</div>
+                        <div className="conf">
+                            <div className="choice">Difficulty</div>
+                            <a className={this.state.difficulty === 0 ? 'chosen' : ''} href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 0)}>Easy</a>
+                            <a className={this.state.difficulty === 1 ? 'chosen' : ''} href="javascript:void(0)" onClick={this.difficultyClick.bind(this, 1)}>medium</a>
+                        </div>
+                        <div className="conf">
+                            <div className="choice">Mode</div>
                             <a className={this.state.timed ? 'chosen' : ''} href="javascript:void(0)" onClick={this.timedClick.bind(this, true)}>Timed</a>
                             <a className={this.state.timed ? '' : 'chosen'} href="javascript:void(0)" onClick={this.timedClick.bind(this, false)}>Relaxed</a>
                         </div>
@@ -49,7 +49,7 @@ class SetGame extends React.Component {
                             <button onClick={this.startGame.bind(this)}>Start Game</button>
                         </div>
                     </div> :
-                    <Game mode={this.state.mode}
+                    <Game difficulty={this.state.difficulty}
                         timed={this.state.timed}
                         endGame={this.endGame.bind(this)}>
                     </Game>
