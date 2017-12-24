@@ -10,6 +10,7 @@ class Instructions extends React.Component {
     render() {
         return (
             <div className="instructions">
+                <h3>Instructions</h3>
                 <div>Select three cards. They must satisfy ALL of the following conditions:</div>
                 <ol>
                     <li>Same color OR all different colors</li>
@@ -18,15 +19,32 @@ class Instructions extends React.Component {
                     <li>Same number of items OR all different number of items</li>
                 </ol>
                 <div>Scoring:</div>
-                <ol>
-                    <li>Correct match:</li>
-                    <ol>
-                        <li>Relaxed: +10</li>
-                        <li>Timed: +5 + bonus (1-10 depending on time)</li>
-                    </ol>
-                    <li>Incorrect match: 0</li>
-                    <li>Hint: -5 (Click on <i className="fa fa-question-circle" aria-hidden="true"></i> for hint)</li>
-                </ol>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Timed</th>
+                            <th>Relaxed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Correct</td>
+                            <td>+5 + bonus</td>
+                            <td>+10</td>
+                        </tr>
+                        <tr>
+                            <td>Incorrect</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Hint</td>
+                            <td>-5</td>
+                            <td>-5</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         )
     }

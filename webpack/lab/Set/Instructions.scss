@@ -1,7 +1,17 @@
 .instructions {
-    border: 1px dashed #999;
+    border: 1px solid #999;
     color: #999;
     font-style: italic;
     margin: 10px 0;
     padding: 10px;
+
+    table {
+        border: 1px solid;
+        width: 100%;
+
+        th, td {
+            padding: 5px;
+            border: 1px solid;
+        }
+    }
 }
