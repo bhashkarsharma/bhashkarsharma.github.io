@@ -1,4 +1,5 @@
 .insta-holder {
+    column-count: 5;
     column-gap: 5px;
 
     a {
@@ -38,26 +39,36 @@
     }
 }
 
-@media (max-width: 1200px) {
-    .insta-holder {
-        column-count: 4;
-    }
+$widths: (
+    w1200: (
+        cols: 4,
+        width: 1200px
+    ),
+
+    w1000: (
+        cols: 3,
+        width: 1000px
+    ),
+
+    w800: (
+        cols: 2,
+        width: 800px
+    ),
+
+    w400: (
+        cols: 1,
+        width: 400px
+    )
+);
+
+@function getVal($map, $val) {
+    @return map-get(map-get($widths, $map), $val);
 }
 
-@media (max-width: 1000px) {
-    .insta-holder {
-        column-count: 3;
-    }
-}
-
-@media (max-width: 800px) {
-    .insta-holder {
-        column-count: 2;
-    }
-}
-
-@media (max-width: 400px) {
-    .insta-holder {
-        column-count: 1;
+@each $width, $val in $widths {
+    @media (max-width: getVal($width, width)) {
+        .insta-holder {
+            column-count: getVal($width, cols);
+        }
     }
 }

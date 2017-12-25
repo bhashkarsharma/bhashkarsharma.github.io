@@ -1,13 +1,17 @@
 $theme_day: (
-    chosen: green,
+    link: lime,
+    link_hover: green,
+    link_chosen: green,
     button: #CCC,
-    hover: #FFF
+    button_hover: #FFF
 );
 
 $theme_night: (
-    chosen: #80ff80,
+    link: #459045,
+    link_hover: #459045,
+    link_chosen: #80ff80,
     button: #333,
-    hover: #000
+    button_hover: #000
 );
 
 .content {
@@ -15,13 +19,13 @@ $theme_night: (
 }
 
 @keyframes rainbow { 
-    0%{
+    0% {
         background-position: 0% 82%;
     }
-    50%{
+    50% {
         background-position:100% 19%;
     }
-    100%{
+    100% {
         background-position:0% 82%;
     }
 }
@@ -138,15 +142,25 @@ $theme_night: (
 @mixin theme_colors($theme) {
     .set {
 
-        a.chosen {
-            border-color: map-get($theme, chosen);
+        a {
+            color: map-get($theme, link);
+
+            &:hover {
+                color: map-get($theme, link_hover);
+            }
+
+            &.chosen {
+                color: map-get($theme, link_chosen);
+                border-color: map-get($theme, link_chosen);
+                font-weight: bold;
+            }
         }
 
         button {
             background-color: map-get($theme, button);
 
             &:hover {
-                background-color: map-get($theme, hover);
+                background-color: map-get($theme, button_hover);
             }
         }
     }

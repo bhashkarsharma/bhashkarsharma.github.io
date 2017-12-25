@@ -152,20 +152,21 @@ $icon_inner_diff: 6px;
 } 
 
 @mixin highlight_colors($theme) {
+    $shadow: 0px 0px 4px 3px;
     .card .inner {
         &.clicked {
-            box-shadow: 0px 0px 4px 3px map-get($theme, clicked);
+            box-shadow: $shadow map-get($theme, clicked);
         }
         &.success {
             animation: zoominout 1s infinite;
-            box-shadow: 0px 0px 4px 3px map-get($theme, success);
+            box-shadow: $shadow map-get($theme, success);
         }
         &.error {
-            box-shadow: 0px 0px 4px 3px map-get($theme, error);
+            box-shadow: $shadow map-get($theme, error);
         }
         &.hint {
             animation: shake 0.5s infinite;
-            box-shadow: 0px 0px 4px 3px map-get($theme, hint);
+            box-shadow: $shadow map-get($theme, hint);
         }
     }
 }

@@ -1,0 +1,90 @@
+footer {
+    margin: auto;
+    max-width: 600px;
+    padding: 1em 2em;
+
+    .links {
+        font-family: "FontAwesome";
+        text-align: center;
+        
+        a {
+            border: none;
+            font-size: 2em;
+            margin: 0 0.45em;
+            padding: 0.4em;
+            text-decoration: none;
+            
+            &.icon {
+
+                $hovermap: (
+                    envelope: #8e8e8e,
+                    github: #55a532,
+                    instagram: #d047d1,
+                    linkedin: #007bb6,
+                    twitter: #55acee
+                );
+
+                @each $key, $val in $hovermap {
+                    &.fa-#{$key}:hover {
+                        color: $val;
+                    }
+                }
+            }
+        }
+    }
+    
+    .copyright {
+        margin: 20px auto;
+        text-align: center;
+    }
+}
+
+$widths: (
+    w1200: (
+        font: 2em,
+        margin: 0 0.45em,
+        padding: 0.4em,
+        width: 1200px
+    ),
+
+    w1000: (
+        font: 2em,
+        margin: 0 0.45em,
+        padding: 0.4em,
+        width: 1000px
+    ),
+
+    w800: (
+        font: 2em,
+        margin: 0 0.45em,
+        padding: 0.4em,
+        width: 800px
+    ),
+
+    w400: (
+        font: 2em,
+        margin: 0 0.45em,
+        padding: 0.4em,
+        width: 400px
+    )
+);
+
+@function getVal($map, $val) {
+    @return map-get(map-get($widths, $map), $val);
+}
+
+@each $width, $val in $widths {
+    @media (max-width: getVal($width, width)) {
+        footer {
+    
+            .links {
+    
+                a {
+                    font-size: getVal($width, font);
+                    margin: getVal($width, margin);
+                    padding: getVal($width, padding);
+                }
+            }
+        }
+    }
+}

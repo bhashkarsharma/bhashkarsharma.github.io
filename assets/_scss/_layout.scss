@@ -33,97 +33,10 @@ a {
     text-decoration: none;
 }
 
-header {
-    padding: 1em;
-
-    a {
-        border: none;
-    }
-
-    .masthead-box {
-        margin-bottom: 10px;
-        text-align: center;
-
-        .masthead {
-            display: inline-block;
-            font-size: 4em;
-            padding: 10px;
-            text-align: center;
-        }
-    }
-
-    nav {
-        display: inline-block;
-
-        ul {
-            font-family: Monaco, Menlo, "Courier New", Courier, monospace;
-            list-style-type: none;
-            padding: 0;
-
-            li {
-                display: inline-block;
-                margin-right: 10px;
-                padding: 5px;
-
-                &:first-child {
-                    margin-left: 10px;
-                }
-            }
-        }
-    }
-}
-
 .content {
     flex: 1;
     margin: auto;
     padding: 1em 2em;
-}
-
-footer {
-    margin: auto;
-    max-width: 600px;
-    padding: 1em 2em;
-
-    .links {
-        font-family: "FontAwesome";
-        text-align: center;
-        
-        a {
-            border: none;
-            font-size: 2em;
-            margin: 0 0.45em;
-            padding: 0.4em;
-            text-decoration: none;
-            
-            &.icon {
-                
-                &.fa-envelope:hover {
-                    color: #8e8e8e;
-                }
-                
-                &.fa-github:hover {
-                    color: #55a532;
-                }
-                
-                &.fa-instagram:hover {
-                    color: #d047d1;
-                }
-                
-                &.fa-linkedin:hover {
-                    color: #007bb6;
-                }
-                
-                &.fa-twitter:hover {
-                    color: #55acee;
-                }
-            }
-        }
-    }
-    
-    .copyright {
-        margin: 20px auto;
-        text-align: center;
-    }
 }
 
 img {
@@ -222,58 +135,8 @@ twitterwidget {
     }
 }
 
-@media (max-width: 1200px) {
-    footer {
-
-        .links {
-
-            a {
-                font-size: 2em;
-                margin: 0 0.45em;
-                padding: 0.4em;
-            }
-        }
-    }
-}
-@media (max-width: 1000px) {
-    footer {
-
-        .links {
-
-            a {
-                font-size: 2em;
-                margin: 0 0.45em;
-                padding: 0.4em;
-            }
-        }
-    }
-}
-@media (max-width: 800px) {
-    footer {
-
-        .links {
-
-            a {
-                font-size: 2em;
-                margin: 0 0.2em;
-                padding: 0.2em;
-            }
-        }
-    }
-}
-@media (max-width: 400px) {
-    footer {
-
-        .links {
-
-            a {
-                font-size: 1.5em;
-                margin: 0 0.2em;
-                padding: 0.2em;
-            }
-        }
-    }
-}
+@import '_scss/header';
+@import '_scss/footer';
 
 @import '_scss/variables';
 @import '_scss/theme';
