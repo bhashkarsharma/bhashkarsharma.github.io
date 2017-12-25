@@ -97,6 +97,10 @@ class Game extends React.Component {
         return a;
     }
 
+    shuffleHand() {
+        this.setState({ hand: this.shuffleArr(this.state.hand) });
+    }
+
     checkSet(a, b, c) {
         const props = ['color', 'count', 'fill', 'shape'];
         let matchCount = 0;
@@ -154,7 +158,7 @@ class Game extends React.Component {
 
     calculateAvailablePoints() {
         if (this.props.timed) {
-            const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 5);
+            const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 10);
             const availablePoints = 5 + Math.max(0, 10 - Math.floor(sec/5));
             const progressWidth = (50 - sec) * 2;
             this.setState({ availablePoints, progressWidth });
@@ -314,6 +318,13 @@ class Game extends React.Component {
                         <div>
                             <button onClick={this.props.endGame}>New Game</button>
                         </div>
+                    </div>
+                }
+                {(this.state.deck.length > 0 || this.state.possible > 0) &&
+                    <div>
+                        <a href="javascript:void(0);" onClick={this.shuffleHand.bind(this)}>
+                            <i className="fa fa-random" aria-hidden="true"></i>
+                        </a>
                     </div>
                 }
             </div>

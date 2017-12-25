@@ -19,6 +19,14 @@ $theme_night: (
     text-align: center;
 
     .conf {
+        
+        a {
+            border: 1px solid;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+        }
+
         .choice {
             font-size: 1.4em;
             font-weight: bold;

@@ -18,10 +18,13 @@
     padding: 20px;
 
     a {
-        border: 1px solid;
-        display: inline-block;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    i {
         margin: 10px;
-        padding: 10px;
     }
 
     button {
@@ -60,16 +63,6 @@
             font-size: 1.2em;
             width: 33.33%;
 
-            a {
-                border: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            i {
-                margin: 10px;
-            }
-            
             &:nth-child(1) {
                 text-align: left;
             }
