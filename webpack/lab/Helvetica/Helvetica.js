@@ -25,6 +25,15 @@ class Helvetica extends React.Component {
       this.tick = this.tick.bind(this);
     }
 
+    componentDidMount() {
+      this.tick();
+      this.interval = setInterval(this.tick, 5000);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+
     getTimeString() {
       let timeString = ['IT', 'IS'];
       const numStrings = [
@@ -103,15 +112,6 @@ class Helvetica extends React.Component {
         blink: this.getBlinkState(this.state.labels, timeString)
       });
       const date = new Date();
-    }
-  
-    componentDidMount() {
-      this.tick();
-      this.interval = setInterval(this.tick, 5000);
-    }
-
-    componentWillUnmount() {
-      clearInterval(this.interval);
     }
   
     render() {
