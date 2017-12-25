@@ -274,7 +274,7 @@ class Game extends React.Component {
 
     render() {
         return (
-            <div className="set">
+            <div className={`set ${this.props.difficulty === 0 ? 'easy' : 'medium'}`}>
                 {(this.state.deck.length > 0 || this.state.possible > 0) &&
                     <div className="stats">
                         <div>

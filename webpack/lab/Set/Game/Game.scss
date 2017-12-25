@@ -86,6 +86,36 @@
             width: 100%;
         }
     }
+
+    &.easy {
+        .card {
+            .icon {
+                margin: 15px auto;
+                zoom: 1.5;
+            }
+        }
+    }
+
+    &.medium {
+        .card {
+            .icon {
+                &:nth-child(1):nth-last-child(1) {
+                    margin: 25px auto;
+                }
+        
+                &:nth-child(1):nth-last-child(2),
+                &:nth-child(2):nth-last-child(1) {
+                    margin: 10px auto;
+                }
+
+                &:nth-child(1):nth-last-child(3),
+                &:nth-child(2):nth-last-child(2),
+                &:nth-child(3):nth-last-child(1) {
+                    margin: 5px auto;
+                }
+            }
+        }
+    }
 }
 
 .day {
