@@ -1,0 +1,26 @@
+.quote {
+    margin: 1em;
+    text-align: center;
+
+    a {
+        border: none;
+    }
+
+    .fa {
+        font-size: 2em;
+    }
+
+    .text {
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+
+        p {
+            display: inline;
+        }
+    }
+
+    .author {
+        font-size: 0.75em;
+        margin-top: 5px;
+    }
+}

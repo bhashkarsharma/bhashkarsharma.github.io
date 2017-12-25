@@ -84,33 +84,6 @@ footer {
     max-width: 600px;
     padding: 1em 2em;
 
-    .quote {
-        margin: 1em;
-        text-align: center;
-
-        a {
-            border: none;
-        }
-
-        .fa {
-            font-size: 2em;
-        }
-
-        .text {
-            font-family: 'Times New Roman', Times, serif;
-            font-style: italic;
-
-            p {
-                display: inline;
-            }
-        }
-
-        .author {
-            font-size: 0.75em;
-            margin-top: 5px;
-        }
-    }
-    
     .links {
         font-family: "FontAwesome";
         text-align: center;
@@ -178,45 +151,7 @@ twitterwidget {
 }
 
 .index {
-    .insta-holder {
-        column-gap: 5px;
-
-        a {
-            border: 0;
-        }
-
-        .insta-item {
-            display: inline-block;
-            position: relative;
-
-            .meta {
-                height: 100%;
-                left: 0;
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                transition: all 0.5s;
-                width: 100%;
-
-                &:hover {
-                    opacity: 1;
-                }
-
-                .likes {
-                    display: block;
-                    font-size: 1.25em;
-                    margin: 100px auto 0;
-                    text-align: center;
-                }
-
-                .caption {
-                    bottom: 10px;
-                    left: 10px;
-                    position: absolute;
-                }
-            }
-        }
-    }
+    
 }
 
 .blog {
@@ -299,13 +234,6 @@ twitterwidget {
             }
         }
     }
-    
-    .index {
-
-        .insta-holder {
-            column-count: 4;
-        }
-    }
 }
 @media (max-width: 1000px) {
     footer {
@@ -317,13 +245,6 @@ twitterwidget {
                 margin: 0 0.45em;
                 padding: 0.4em;
             }
-        }
-    }
-
-    .index {
-
-        .insta-holder {
-            column-count: 3;
         }
     }
 }
@@ -339,13 +260,6 @@ twitterwidget {
             }
         }
     }
-
-    .index {
-
-        .insta-holder {
-            column-count: 2;
-        }
-    }
 }
 @media (max-width: 400px) {
     footer {
@@ -357,13 +271,6 @@ twitterwidget {
                 margin: 0 0.2em;
                 padding: 0.2em;
             }
-        }
-    }
-
-    .index {
-
-        .insta-holder {
-            column-count: 1;
         }
     }
 }

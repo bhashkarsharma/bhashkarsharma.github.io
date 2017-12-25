@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Quote from './Quote';
-import Instagram from './Instagram';
+import Quote from './Quote/Quote';
+import Instagram from './Instagram/Instagram';
 import Helvetica from './lab/Helvetica/Helvetica';
 import SetGame from './lab/Set/SetGame/SetGame';
 
