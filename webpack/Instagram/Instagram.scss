@@ -1,12 +1,23 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
 .insta-holder {
     column-count: 5;
     column-gap: 5px;
+    min-height: 500px;
 
     a {
         border: 0;
     }
 
     .insta-item {
+        animation: fadeIn 2s normal forwards ease-in;
         display: inline-block;
         position: relative;
 

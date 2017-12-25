@@ -1,19 +1,3 @@
-$theme_day: (
-    link: lime,
-    link_hover: green,
-    link_chosen: green,
-    button: #CCC,
-    button_hover: #FFF
-);
-
-$theme_night: (
-    link: #459045,
-    link_hover: #459045,
-    link_chosen: #80ff80,
-    button: #333,
-    button_hover: #000
-);
-
 .content {
     padding: 1em;
 }
@@ -137,39 +121,4 @@ $theme_night: (
             }
         }
     }
-}
-
-@mixin theme_colors($theme) {
-    .set {
-
-        a {
-            color: map-get($theme, link);
-
-            &:hover {
-                color: map-get($theme, link_hover);
-            }
-
-            &.chosen {
-                color: map-get($theme, link_chosen);
-                border-color: map-get($theme, link_chosen);
-                font-weight: bold;
-            }
-        }
-
-        button {
-            background-color: map-get($theme, button);
-
-            &:hover {
-                background-color: map-get($theme, button_hover);
-            }
-        }
-    }
-}
-
-.day {
-    @include theme_colors($theme_day);
-}
-
-.night {
-    @include theme_colors($theme_night);
 }
