@@ -39,7 +39,7 @@ class Instructions extends React.Component {
                             <td>0</td>
                         </tr>
                         <tr>
-                            <td>Hint</td>
+                            <td>Hint <i className="fa fa-question-circle" aria-hidden="true"></i></td>
                             <td>-5</td>
                             <td>-5</td>
                         </tr>

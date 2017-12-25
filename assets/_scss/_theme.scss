@@ -21,12 +21,14 @@ body.#{$body_class} {
     }
 
     header {
+        
         .masthead, nav {
             background: $body_bg;
         }
     }
 
     footer {
+
         .quote {
             color: $light_text_color;
             
@@ -41,11 +43,14 @@ body.#{$body_class} {
     }
 
     .index {
+
         .insta-holder {
+            
             a {
                 color: $body_bg;
             }
             .insta-item {
+
                 .meta {
                     color: $body_bg;
 
@@ -71,6 +76,7 @@ body.#{$body_class} {
     }
 
     .post {
+
         .post-meta {
             color: $light_text_color;
         }

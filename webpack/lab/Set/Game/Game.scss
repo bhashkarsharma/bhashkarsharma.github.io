@@ -35,7 +35,8 @@
 
     .final-stats {
         animation: rainbow 18s ease infinite;
-        background: linear-gradient(90deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+        background: linear-gradient(90deg, #ff2400, #e81d1d, #e8b71d, #e3e81d,
+                    #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
         background-size: 1800% 1800%;
         padding: 90px 10px;
         text-align: center;
@@ -88,7 +89,9 @@
     }
 
     &.easy {
+
         .card {
+
             .icon {
                 margin: 15px auto;
                 zoom: 1.5;
@@ -97,7 +100,9 @@
     }
 
     &.medium {
+
         .card {
+
             .icon {
                 &:nth-child(1):nth-last-child(1) {
                     margin: 25px auto;
@@ -119,6 +124,7 @@
 }
 
 .day {
+
     .set {
         
         a.chosen {
@@ -136,6 +142,7 @@
 }
 
 .night {
+
     .set {
         
         a.chosen {
