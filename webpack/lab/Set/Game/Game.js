@@ -44,6 +44,7 @@ class Game extends React.Component {
             lastWin: 0,
             mode: 1,
             possible: 0,
+            progressWidth: 100,
             score: 0,
             startTime: 0,
             visualOn: false
@@ -153,11 +154,12 @@ class Game extends React.Component {
 
     calculateAvailablePoints() {
         if (this.props.timed) {
-            const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 10);
-            const availablePoints = 5 + Math.max(1, 10 - Math.floor(sec/5));
-            this.setState({ availablePoints });
+            const sec = Math.max(0, Math.floor((new Date() - this.state.lastWin) / 1000) - 5);
+            const availablePoints = 5 + Math.max(0, 10 - Math.floor(sec/5));
+            const progressWidth = (50 - sec) * 2;
+            this.setState({ availablePoints, progressWidth });
         } else {
-            this.setState({ availablePoints: 10 });
+            this.setState({ availablePoints: 10, progressWidth: 100 });
         }
     }
 
@@ -292,7 +294,7 @@ class Game extends React.Component {
                             {this.state.score}
                         </div>
                         {this.props.timed && 
-                            <progress className="gameTimer" value={this.state.availablePoints} max="10"></progress>
+                            <progress className="gameTimer" value={this.state.progressWidth} max="100"></progress>
                         }
                     </div>
                 }
