@@ -1,3 +1,27 @@
+$logo_border: 4px solid;
+$logo_height: 40px;
+$logo_left: 60px;
+$logo_size: 94px;
+$logo_top: 40px;
+
+@keyframes logoAnimation {
+    20% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes logoS1 {
+    20% {
+        transform: rotate(0);
+    }
+    100% {
+        left: $logo_left + 11px;
+        transform: rotate(-135deg);
+    }
+}
 
 header {
     padding: 1em;
@@ -15,6 +39,45 @@ header {
             font-size: 4em;
             padding: 10px;
             text-align: center;
+        }
+
+        .logo {
+            height: $logo_size;
+            position: relative;
+            width: $logo_size;
+
+            div {
+                border-top: $logo_border;
+                border-right: $logo_border;
+                display: inline-block;
+                height: $logo_height;
+                position: absolute;
+                width: $logo_height;
+            }
+
+            .b1 {
+                animation: logoAnimation 2s forwards ease-in-out;
+                left: 0;
+                top: 0;
+            }
+
+            .b2 {
+                animation: logoAnimation 2s forwards ease-in-out;
+                left: 0;
+                top: $logo_top;
+            }
+
+            .s1 {
+                animation: logoS1 2s forwards ease-in-out;
+                left: $logo_left;
+                top: 0;
+            }
+
+            .s2 {
+                animation: logoAnimation 2s forwards ease-in-out;
+                left: $logo_left;
+                top: $logo_top;
+            }
         }
     }
 
