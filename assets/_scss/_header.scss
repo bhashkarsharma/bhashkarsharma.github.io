@@ -4,12 +4,21 @@ $logo_left: 60px;
 $logo_size: 94px;
 $logo_top: 40px;
 
-@keyframes logoAnimation {
+@keyframes logoB1 {
     20% {
         transform: rotate(0);
     }
     100% {
-        transform: rotate(45deg);
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes logoB2 {
+    20% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(225deg);
     }
 }
 
@@ -20,6 +29,15 @@ $logo_top: 40px;
     100% {
         left: $logo_left + 11px;
         transform: rotate(-135deg);
+    }
+}
+
+@keyframes logoS2 {
+    20% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(-45deg);
     }
 }
 
@@ -47,8 +65,6 @@ header {
             width: $logo_size;
 
             div {
-                border-top: $logo_border;
-                border-right: $logo_border;
                 display: inline-block;
                 height: $logo_height;
                 position: absolute;
@@ -56,25 +72,33 @@ header {
             }
 
             .b1 {
-                animation: logoAnimation 2s forwards ease-in-out;
+                animation: logoB1 2s forwards ease-in-out;
+                border-top: $logo_border;
+                border-left: $logo_border;
                 left: 0;
                 top: 0;
             }
 
             .b2 {
-                animation: logoAnimation 2s forwards ease-in-out;
+                animation: logoB2 2s forwards ease-in-out;
+                border-bottom: $logo_border;
+                border-left: $logo_border;
                 left: 0;
                 top: $logo_top;
             }
 
             .s1 {
                 animation: logoS1 2s forwards ease-in-out;
+                border-right: $logo_border;
+                border-top: $logo_border;
                 left: $logo_left;
                 top: 0;
             }
 
             .s2 {
-                animation: logoAnimation 2s forwards ease-in-out;
+                animation: logoS2 2s forwards ease-in-out;
+                border-bottom: $logo_border;
+                border-right: $logo_border;
                 left: $logo_left;
                 top: $logo_top;
             }
