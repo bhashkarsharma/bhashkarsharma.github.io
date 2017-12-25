@@ -1,3 +1,15 @@
+$theme_day: (
+    chosen: green,
+    button: #CCC,
+    hover: #FFF
+);
+
+$theme_night: (
+    chosen: #80ff80,
+    button: #333,
+    hover: #000
+);
+
 .content {
     padding: 1em;
 }
@@ -123,38 +135,27 @@
     }
 }
 
-.day {
-
+@mixin theme_colors($theme) {
     .set {
-        
+
         a.chosen {
-            border-color: green;
+            border-color: map-get($theme, chosen);
         }
 
         button {
-            background-color: #CCC;
-            
+            background-color: map-get($theme, button);
+
             &:hover {
-                background-color: #FFF;
+                background-color: map-get($theme, hover);
             }
         }
     }
 }
 
+.day {
+    @include theme_colors($theme_day);
+}
+
 .night {
-
-    .set {
-        
-        a.chosen {
-            border-color: #80ff80;;
-        }
-
-        button {
-            background-color: #333;
-            
-            &:hover {
-                background-color: #000;
-            }
-        }
-    }
+    @include theme_colors($theme_night);
 }

@@ -8,20 +8,23 @@ body {
     min-height: 100vh;
 }
 
-progress#scrollPos {
+progress {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
     border: none;
     height: 5px;
-    left: 0;
-    position: fixed;
-    top: 0;
     width: 100%;
-
+    
     &::-webkit-progress-bar {
         background-color: transparent;
+    }
+    
+    &#scrollPos {
+        left: 0;
+        position: fixed;
+        top: 0;
     }
 }
 
@@ -217,7 +220,7 @@ twitterwidget {
 }
 
 .blog {
-    
+
     .post-list {
         list-style-type: none;
         padding-left: 0;
@@ -365,5 +368,9 @@ twitterwidget {
     }
 }
 
-@import "_scss/day";
-@import "_scss/night";
+@import '_scss/variables';
+@import '_scss/theme';
+
+@each $theme in $theme_day, $theme_night {
+    @include create_theme($theme);
+}

@@ -1,89 +1,91 @@
-body.#{$body_class} {
-    background-color: $body_bg;
-    color: $body_color;
+@mixin create_theme($theme) {
+    body.#{map-get($theme, body_class)} {
+        background-color: map-get($theme, body_bg);
+        color: map-get($theme, body_color);
 
-    progress {
-        color: $progress_color;
+        progress {
+            color: map-get($theme, progress_color);
 
-        &::-webkit-progress-value {
-            background-color: $progress_color;
-        }
-    }
-
-    a {
-        color: $link_color;
-        border-color: $link_color_light;
-
-        &:hover {
-            color: $link_hover_color;
-            border-color: $link_color;
-        }
-    }
-
-    header {
-        
-        .masthead, nav {
-            background: $body_bg;
-        }
-    }
-
-    footer {
-
-        .quote {
-            color: $light_text_color;
-            
-            .fa {
-                color: $light_text_color;
+            &::-webkit-progress-value {
+                background-color: map-get($theme, progress_color);
             }
         }
 
-        .copyright {
-            color: $light_text_color;
-        }
-    }
+        a {
+            color: map-get($theme, link_color);
+            border-color: map-get($theme, link_color_light);
 
-    .index {
-
-        .insta-holder {
-            
-            a {
-                color: $body_bg;
+            &:hover {
+                color: map-get($theme, link_hover_color);
+                border-color: map-get($theme, link_color);
             }
-            .insta-item {
+        }
 
-                .meta {
-                    color: $body_bg;
+        header {
 
-                    &:hover {
-                        background: rgba($link_hover_color, 0.8);
+            .masthead, nav {
+                background: map-get($theme, body_bg);
+            }
+        }
+
+        footer {
+
+            .quote {
+                color: map-get($theme, light_text_color);
+                
+                .fa {
+                    color: map-get($theme, light_text_color);
+                }
+            }
+
+            .copyright {
+                color: map-get($theme, light_text_color);
+            }
+        }
+
+        .index {
+
+            .insta-holder {
+                
+                a {
+                    color: map-get($theme, body_bg);
+                }
+                .insta-item {
+
+                    .meta {
+                        color: map-get($theme, body_bg);
+
+                        &:hover {
+                            background: rgba(map-get($theme, link_hover_color), 0.8);
+                        }
                     }
                 }
             }
         }
-    }
 
-    .blog {
+        .blog {
 
-        .post-list {
+            .post-list {
 
-            li {
+                li {
 
-                .post-meta {
-                    color: $light_text_color;
+                    .post-meta {
+                        color: map-get($theme, light_text_color);
+                    }
                 }
             }
         }
-    }
 
-    .post {
+        .post {
 
-        .post-meta {
-            color: $light_text_color;
-        }
+            .post-meta {
+                color: map-get($theme, light_text_color);
+            }
 
-        blockquote {
-            background-color: $light_bg_color;
-            border-color: $link_color;
+            blockquote {
+                background-color: map-get($theme, light_bg_color);
+                border-color: map-get($theme, link_color);
+            }
         }
     }
 }

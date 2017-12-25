@@ -1,0 +1,23 @@
+$theme_day: (
+    body_class: day,
+    body_bg: white,
+    body_color: #333,
+    link_color: green,
+    link_color_light: #00ff00,
+    link_hover_color: #333,
+    light_text_color: #AAA,
+    light_bg_color: #DDD,
+    progress_color: #800080
+);
+
+$theme_night: (
+    body_class: night,
+    body_bg: #333,
+    body_color: white,
+    link_color: #80ff80,
+    link_color_light: #459045,
+    link_hover_color: white,
+    light_text_color: #AAA,
+    light_bg_color: #222,
+    progress_color: #ff80ff
+);

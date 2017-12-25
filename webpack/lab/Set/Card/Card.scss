@@ -35,10 +35,10 @@ $icon_inner_diff: 6px;
 
 @keyframes shake {
     20% {
-        transform: translate3d(-4px, 0, 0);
+        transform: translate3d(-3px, 0, 0);
     }
     80% {
-        transform: translate3d(4px, 0, 0);
+        transform: translate3d(3px, 0, 0);
     }
 }
 
@@ -118,21 +118,22 @@ $icon_inner_diff: 6px;
         }
     }
 }
+
 @each $name, $value in $icon_colors {
     .card {
         .inner.#{$name} {
             .square, .round {
-                border-color: #{$value};
+                border-color: $value;
 
                 &.filled {
-                    background-color: #{$value};
+                    background-color: $value;
                 }
 
                 &.shaded {
                     background: linear-gradient(
                         to bottom,
-                        #{$value},
-                        #{$value} 50%,
+                        $value,
+                        $value 50%,
                         white 50%,
                         white
                     );
@@ -140,10 +141,10 @@ $icon_inner_diff: 6px;
             }
 
             .triangle {
-                border-bottom: $icon_size solid #{$value};
+                border-bottom: $icon_size solid $value;
 
                 &.shaded:after {
-                    border-bottom: $icon_size/2 solid #{$value};
+                    border-bottom: $icon_size/2 solid $value;
                 }
             }
         }
@@ -153,18 +154,18 @@ $icon_inner_diff: 6px;
 @mixin highlight_colors($theme) {
     .card .inner {
         &.clicked {
-            box-shadow: 0px 0px 4px 4px #{map-get($theme, clicked)};
+            box-shadow: 0px 0px 4px 3px map-get($theme, clicked);
         }
         &.success {
             animation: zoominout 1s infinite;
-            box-shadow: 0px 0px 4px 4px #{map-get($theme, success)};
+            box-shadow: 0px 0px 4px 3px map-get($theme, success);
         }
         &.error {
-            box-shadow: 0px 0px 4px 4px #{map-get($theme, error)};
+            box-shadow: 0px 0px 4px 3px map-get($theme, error);
         }
         &.hint {
             animation: shake 0.5s infinite;
-            box-shadow: 0px 0px 4px 4px #{map-get($theme, hint)};
+            box-shadow: 0px 0px 4px 3px map-get($theme, hint);
         }
     }
 }
