@@ -15,50 +15,10 @@ $theme_night: (
 
         .item {
             display: inline-block;
-            font-size: 1.5em;
-            height: 2em;
+            font-size: 3vw;
+            height: 4vw;
             text-align: center;
-            width: 2em;
-        }
-    }
-}
-
-$widths: (
-    w1200: (
-        font: 1.5em,
-        dim: 2em,
-        width: 1200px
-    ),
-
-    w1000: (
-        font: 1.2em,
-        dim: 1.4em,
-        width: 1200px
-    ),
-
-    w800: (
-        font: 1em,
-        dim: 1.5em,
-        width: 1200px
-    ),
-
-    w400: (
-        font: 1em,
-        dim: 1.2em,
-        width: 1200px
-    ),
-);
-
-@function getVal($map, $val) {
-    @return map-get(map-get($widths, $map), $val);
-}
-
-@each $width, $val in $widths {
-    @media (max-width: getVal($width, width)) {
-        .helvetica-clock .row .item {
-            font-size: getVal($width, font);
-            height: getVal($width, dim);
-            width: getVal($width, dim);
+            width: 4vw;
         }
     }
 }

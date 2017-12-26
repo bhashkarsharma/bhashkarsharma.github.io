@@ -1,13 +1,17 @@
 .quote {
-    margin: 1em;
+    margin: 3vw;
     text-align: center;
+
+    #bulb {
+        margin: 10px;
+    }
 
     a {
         border: none;
     }
 
     .fa {
-        font-size: 2em;
+        font-size: 3vw;
     }
 
     .text {
@@ -20,7 +24,7 @@
     }
 
     .author {
-        font-size: 0.75em;
+        font-size: 1.5vw;
         margin-top: 5px;
     }
 }
