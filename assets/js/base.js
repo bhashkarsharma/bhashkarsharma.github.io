@@ -14,6 +14,10 @@ var SiteConf = (function() {
         }, defVal);
     }
 
+    function deleteCookie(key) {
+        setCookie(cookie, null, 'Thu, 01 Jan 1970 00:00:01 GMT');
+    }
+
     function switchTheme(theme, persist=true) {
         var switcher = document.querySelector('#themeswitcher');
         var body = document.body;
@@ -28,8 +32,9 @@ var SiteConf = (function() {
 
     return {
         cookieName,
-        setCookie,
         getCookie,
+        setCookie,
+        deleteCookie,
         switchTheme
     };
 })();
