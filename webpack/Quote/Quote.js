@@ -23,7 +23,7 @@ class Quote extends React.Component {
       <div>
         {this.state.quote.title.length > 0 &&
           <div>
-            <i class="fas fa-quote-left"></i>
+            <i className="fas fa-quote-left"></i>
             <span className="text" dangerouslySetInnerHTML={this.getQuote()}></span>
             <div className="author">&mdash; {this.state.quote.title}</div>
           </div>
