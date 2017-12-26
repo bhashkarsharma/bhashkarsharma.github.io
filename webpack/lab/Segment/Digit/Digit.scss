@@ -1,0 +1,196 @@
+$colors_day: (
+    bg: #e6e6e6,
+    border: #aaa,
+    shadow: #666
+);
+
+$colors_night: (
+    bg: #e6e6e6,
+    border: #aaa,
+    shadow: #666
+);
+
+.digit {
+    display: inline-block;
+    position: relative;
+
+    .node {
+        position: absolute;
+
+        .edge {
+            position: absolute;
+            transition-duration: 0.5s;
+        }
+
+        .knob {
+            position: absolute;
+            z-index: 1;
+
+            .inner {
+                position: absolute;
+            }
+        }
+    }
+}
+
+$widths: (
+    w960: (
+        digit_height: 155px,
+        digit_margin: 0 25px,
+        digit_width: 90px,
+        edge_border_rad: 12px,
+        edge_height: 65px,
+        edge_transform_origin: 11px 11px,
+        edge_width: 20px,
+        knob_border_rad: 12px,
+        knob_dim: 20px,
+        inner_border_rad: 10px,
+        inner_dim: 10px,
+        inner_offset: 4px,
+        offset_bottom: 22px,
+        offset_top: 67px,
+        offset_right: 22px,
+        min_width: 961px,
+        max_width: 1600px
+    ),
+
+    w480: (
+        digit_height: 92px,
+        digit_margin: 0 12px,
+        digit_width: 55px,
+        edge_border_rad: 10px,
+        edge_height: 37px,
+        edge_transform_origin: 7px 7px,
+        edge_width: 13px,
+        knob_border_rad: 7px,
+        knob_dim: 13px,
+        inner_border_rad: 7px,
+        inner_dim: 5px,
+        inner_offset: 4px,
+        offset_bottom: 15px,
+        offset_top: 39px,
+        offset_right: 15px,
+        min_width: 481px,
+        max_width: 960px
+    ),
+
+    w320: (
+        digit_height: 66px,
+        digit_margin: 0 10px,
+        digit_width: 38px,
+        edge_border_rad: 12px,
+        edge_height: 26px,
+        edge_transform_origin: 4px 4px,
+        edge_width: 8px,
+        knob_border_rad: 6px,
+        knob_dim: 8px,
+        inner_border_rad: 4px,
+        inner_dim: 4px,
+        inner_offset: 2px,
+        offset_bottom: 10px,
+        offset_top: 28px,
+        offset_right: 10px,
+        min_width: 321px,
+        max_width: 480px
+    )
+);
+
+@function getVal($map, $val) {
+    @return map-get(map-get($widths, $map), $val);
+}
+
+@each $width, $val in $widths {
+    @media (min-width: getVal($width, min_width)) and (max-width: getVal($width, max_width)) {
+        .digit {
+            height: getVal($width, digit_height);
+            margin: getVal($width, digit_margin);
+            width: getVal($width, digit_width);
+        
+            .node {
+        
+                .edge {
+                    border-radius: getVal($width, edge_border_rad);
+                    height: getVal($width, edge_height);
+                    transform-origin: getVal($width, edge_transform_origin);
+                    width: getVal($width, edge_width);
+                }
+        
+                .knob {
+                    border-radius: getVal($width, knob_border_rad);
+                    height: getVal($width, knob_dim);
+                    width: getVal($width, knob_dim);
+        
+                    .inner {
+                        border-radius: getVal($width, inner_border_rad);
+                        height: getVal($width, inner_dim);
+                        left: getVal($width, inner_offset);
+                        top: getVal($width, inner_offset);
+                        width: getVal($width, inner_dim);
+                    }
+                }
+        
+                &:nth-child(1) {
+                    left: 0;
+                    top: 0;
+                }
+                
+                &:nth-child(2) {
+                    right: getVal($width, offset_right);
+                    top: 0;
+                }
+                
+                &:nth-child(3) {
+                    left: 0;
+                    top: getVal($width, offset_top);
+                }
+                
+                &:nth-child(4) {
+                    right: getVal($width, offset_right);
+                    top: getVal($width, offset_top);
+                }
+                
+                &:nth-child(5) {
+                    bottom: getVal($width, offset_bottom);
+                    left: 0;
+                }
+                
+                &:nth-child(6) {
+                    bottom: getVal($width, offset_bottom);
+                    right: getVal($width, offset_right);
+                }
+            }
+        }
+    }
+}
+
+@mixin setColors($theme) {
+    .digit {
+    
+        .node {
+    
+            .edge {
+                background: map-get($theme, bg);
+                border: 1px solid map-get($theme, border);
+                box-shadow: 1px 1px 1px map-get($theme, shadow);
+            }
+    
+            .knob {
+                background: map-get($theme, bg);
+                border: 1px solid map-get($theme, border);
+                box-shadow: 2px 2px 4px map-get($theme, shadow);
+    
+                .inner {
+                    border: 1px solid map-get($theme, border);
+                }
+            }
+        }
+    }
+}
+
+.day {
+    @include setColors($colors_day);
+}
+
+.night {
+    @include setColors($colors_night);
+}
