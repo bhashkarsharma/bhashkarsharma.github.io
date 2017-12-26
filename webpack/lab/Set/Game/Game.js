@@ -284,17 +284,15 @@ class Game extends React.Component {
                 {(this.state.deck.length > 0 || this.state.possible > 0) &&
                     <div className="stats">
                         <div>
-                            <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>
-                                <i className="fa fa-question-circle" aria-hidden="true"></i>
-                            </a>
+                            <div className="fa-holder"><i className="fas fa-gamepad"></i></div>
                             {this.state.possible}
                         </div>
                         <div>
-                            <i className="fa fa-th" aria-hidden="true"></i>
+                            <div className="fa-holder"><i className="fas fa-th"></i></div>
                             {this.state.deck.length}
                         </div>
                         <div>
-                            <i className="fa fa-gamepad" aria-hidden="true"></i>
+                            <div className="fa-holder"><i className="fas fa-trophy"></i></div>
                             {this.state.score}
                         </div>
                         {this.props.timed && 
@@ -321,10 +319,18 @@ class Game extends React.Component {
                     </div>
                 }
                 {(this.state.deck.length > 0 || this.state.possible > 0) &&
-                    <div>
-                        <a href="javascript:void(0);" onClick={this.shuffleHand.bind(this)}>
-                            <i className="fa fa-random" aria-hidden="true"></i>
-                        </a>
+                    <div className="stats">
+                        <div>
+                            <a href="javascript:void(0);" onClick={this.showHint.bind(this)}>
+                                <div className="fa-holder"><i className="fas fa-question-circle"></i></div>
+                            </a>
+                        </div>
+                        <div></div>
+                        <div>
+                            <a href="javascript:void(0);" onClick={this.shuffleHand.bind(this)}>
+                                <div className="fa-holder"><i className="fas fa-random"></i></div>
+                            </a>
+                        </div>
                     </div>
                 }
             </div>
