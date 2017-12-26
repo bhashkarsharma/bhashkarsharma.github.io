@@ -1,6 +1,18 @@
+$theme_day: (
+    on: #808080,
+    off: #dddddd
+);
+
+$theme_night: (
+    on: #dddddd,
+    off: #808080
+);
+
 .helvetica-clock {
     font-family: Helvetica, Arial, sans-serif;
+
     .row {
+
         .item {
             display: inline-block;
             font-size: 1.5em;
@@ -11,59 +23,63 @@
     }
 }
 
-@media (max-width: 1200px) {
-    .helvetica-clock .row .item {
-        font-size: 1.5em;
-        height: 2em;
-        width: 2em;
+$widths: (
+    w1200: (
+        font: 1.5em,
+        dim: 2em,
+        width: 1200px
+    ),
+
+    w1000: (
+        font: 1.2em,
+        dim: 1.4em,
+        width: 1200px
+    ),
+
+    w800: (
+        font: 1em,
+        dim: 1.5em,
+        width: 1200px
+    ),
+
+    w400: (
+        font: 1em,
+        dim: 1.2em,
+        width: 1200px
+    ),
+);
+
+@function getVal($map, $val) {
+    @return map-get(map-get($widths, $map), $val);
+}
+
+@each $width, $val in $widths {
+    @media (max-width: getVal($width, width)) {
+        .helvetica-clock .row .item {
+            font-size: getVal($width, font);
+            height: getVal($width, dim);
+            width: getVal($width, dim);
+        }
     }
 }
-@media (max-width: 1000px) {
-    .helvetica-clock .row .item {
-        font-size: 1.2em;
-        height: 1.4em;
-        width: 1.4em;
-    }
-}
-@media (max-width: 800px) {
-    .helvetica-clock .row .item {
-        font-size: 1em;
-        height: 1.5em;
-        width: 1.5em;
-    }
-}
-@media (max-width: 400px) {
-    .helvetica-clock .row .item {
-        font-size: 1em;
-        height: 1.2em;
-        width: 1.2em;
+
+@mixin clockTheme($theme) {
+    .helvetica-clock .item {
+
+        &.on {
+            color: map-get($theme, on);
+        }
+
+        &.off {
+            color: map-get($theme, off);
+        }
     }
 }
 
 .day {
-    .helvetica-clock {
-        .item {
-            &.on {
-                color: #808080;
-            }
-            
-            &.off {
-                color: #DDD;
-            }
-        }
-    }
+    @include clockTheme($theme_day);
 }
 
 .night {
-    .helvetica-clock {
-        .item {
-            &.on {
-                color: #DDD;
-            }
-
-            &.off {
-                color: #808080;
-            }
-        }
-    }
+    @include clockTheme($theme_night);
 }
