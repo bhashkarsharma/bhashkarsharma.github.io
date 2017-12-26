@@ -1,16 +1,31 @@
 <footer>
     <section class="quote">
-        <div id="bulb"><a id="themeswitcher" href="javascript:switchTheme()"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></a></div>
+        <div id="bulb">
+            <a id="themeswitcher" href="javascript:switchTheme()">
+                <i class="far fa-lightbulb fa-2x"></i>
+            </a>
+        </div>
         <div id="quote"></div>
     </section>
     <section class="links">
-        <a href="https://twitter.com/bhashkarsharma" class="icon fa-twitter"></a>
-        <a href="https://linkedin.com/in/bhashkarsharma" class="icon fa-linkedin"></a>
-        <a href="https://github.com/bhashkarsharma" class="icon fa-github"></a>
-        <a href="https://instagram.com/bhashkarsharma" class="icon fa-instagram"></a>
-        <a href="http://www.google.com/recaptcha/mailhide/d?k=01SDx7taNN6zHr16t_7ptUow==&c=9O4_ghKVlCH-WzZa1rp7YEyR4f9inkxWAIK9q55KjYs=" class="icon fa-envelope"></a>
+        <a href="https://twitter.com/bhashkarsharma">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://linkedin.com/in/bhashkarsharma">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/bhashkarsharma">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/bhashkarsharma">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="http://www.google.com/recaptcha/mailhide/d?k=01SDx7taNN6zHr16t_7ptUow==&c=9O4_ghKVlCH-WzZa1rp7YEyR4f9inkxWAIK9q55KjYs=">
+            <i class="fas fa-at"></i>
+        </a>
     </section>
     <section class="copyright">&copy; {{ 'now' | date: "%Y" }} Bhashkar Sharma</section>
 </footer>
 <script src="{{ '/assets/js/base.js?v=' | append: site.github.build_revision | relative_url }}"></script>
+<script src="{{ '/assets/js/fontawesome-all.min.js?v=' | append: site.github.build_revision | relative_url }}"></script>
 <script src="{{ '/assets/js/bundle.js?v=' | append: site.github.build_revision | relative_url }}"></script>

@@ -13,21 +13,18 @@ footer {
             margin: 0 0.45em;
             padding: 0.4em;
             text-decoration: none;
-            
-            &.icon {
 
-                $hovermap: (
-                    envelope: #8e8e8e,
-                    github: #55a532,
-                    instagram: #d047d1,
-                    linkedin: #007bb6,
-                    twitter: #55acee
-                );
+            $hovermap: (
+                at: #8e8e8e,
+                github: #55a532,
+                instagram: #d047d1,
+                linkedin: #007bb6,
+                twitter: #55acee
+            );
 
-                @each $key, $val in $hovermap {
-                    &.fa-#{$key}:hover {
-                        color: $val;
-                    }
+            @each $key, $val in $hovermap {
+                .fa-#{$key}:hover {
+                    color: $val;
                 }
             }
         }
