@@ -1,7 +1,7 @@
 footer {
     margin: auto;
     max-width: 600px;
-    padding: 1em 2em;
+    padding: 1vw 2vw;
 
     .links {
         font-family: "FontAwesome";
@@ -9,9 +9,9 @@ footer {
         
         a {
             border: none;
-            font-size: 2em;
-            margin: 0 0.45em;
-            padding: 0.4em;
+            font-size: 4vw;
+            margin: 0 1vw;
+            padding: 0.5vw;
             text-decoration: none;
 
             $hovermap: (
@@ -33,63 +33,5 @@ footer {
     .copyright {
         margin: 20px auto;
         text-align: center;
-    }
-}
-
-$widths: (
-    w1200: (
-        font: 2em,
-        margin: 0 0.45em,
-        padding: 0.4em,
-        width: 1200px
-    ),
-
-    w1000: (
-        font: 2em,
-        margin: 0 0.45em,
-        padding: 0.4em,
-        width: 1000px
-    ),
-
-    w800: (
-        font: 1.5em,
-        margin: 0 0.45em,
-        padding: 0.4em,
-        width: 800px
-    ),
-
-    w400: (
-        font: 1.5em,
-        margin: 0 0.45em,
-        padding: 0.4em,
-        width: 400px
-    )
-);
-
-@function getVal($map, $val) {
-    @return map-get(map-get($widths, $map), $val);
-}
-
-@each $width, $val in $widths {
-    @media (max-width: getVal($width, width)) {
-        footer {
-    
-            .links {
-    
-                a {
-                    font-size: getVal($width, font);
-                    margin: getVal($width, margin);
-                    padding: getVal($width, padding);
-
-                    &:first-child {
-                        margin-left: 0;
-                    }
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                }
-            }
-        }
     }
 }
