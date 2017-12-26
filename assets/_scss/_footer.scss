@@ -52,14 +52,14 @@ $widths: (
     ),
 
     w800: (
-        font: 2em,
+        font: 1.5em,
         margin: 0 0.45em,
         padding: 0.4em,
         width: 800px
     ),
 
     w400: (
-        font: 2em,
+        font: 1.5em,
         margin: 0 0.45em,
         padding: 0.4em,
         width: 400px
@@ -80,6 +80,14 @@ $widths: (
                     font-size: getVal($width, font);
                     margin: getVal($width, margin);
                     padding: getVal($width, padding);
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
                 }
             }
         }
