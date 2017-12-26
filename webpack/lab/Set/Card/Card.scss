@@ -42,6 +42,15 @@ $icon_inner_diff: 6px;
     }
 }
 
+@keyframes jiggle {
+    20% {
+        transform: rotate(-1deg);
+    }
+    80% {
+        transform: rotate(1deg);
+    }
+}
+
 .card {
     display: inline-block;
     width: 33.33%;
@@ -160,12 +169,14 @@ $icon_inner_diff: 6px;
         &.success {
             animation: zoominout 1s infinite;
             box-shadow: $shadow map-get($theme, success);
+            filter: blur(2px);
         }
         &.error {
+            animation: shake 0.5s infinite;
             box-shadow: $shadow map-get($theme, error);
         }
         &.hint {
-            animation: shake 0.5s infinite;
+            animation: jiggle 0.5s infinite;
             box-shadow: $shadow map-get($theme, hint);
         }
     }
