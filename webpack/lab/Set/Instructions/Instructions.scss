@@ -1,17 +1,69 @@
+$day: (
+    success: #00ff00,
+    error: #ff2f00
+);
+
+$night: (
+    success: #66ff66,
+    error: #ff6666
+);
+
 .instructions {
-    color: #999;
-    font-style: italic;
-    margin: 10px 0;
-    padding: 10px;
+    
+    button {
+        display: block;
+        margin: auto;
+    }
 
-    table {
-        border: 1px solid;
-        width: 100%;
-
-        th, td {
-            border: 1px solid;
-            padding: 5px;
-            text-align: center;
+    .demo {
+        .desc {
+            border: none;
+            display: block;
+            font-family: serif;
+            font-style: italic;
+            font-weight: normal;
         }
     }
+
+    .text {
+        color: #999;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 10px;
+
+        table {
+            border: 1px solid;
+            width: 100%;
+
+            th, td {
+                border-top: 1px solid;
+                padding: 5px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@mixin setColors($theme) {
+    .demo {
+        .card {
+            border-radius: 5px;
+
+            &:nth-child(n):nth-child(-n+3), &:nth-child(n+3):nth-child(-n+7){
+                background: map-get($theme, success);
+            }
+            
+            &:nth-child(n+8):nth-child(-n+10){
+                background: map-get($theme, error);
+            }
+        }
+    }
+}
+
+.day {
+    @include setColors($day);
+}
+
+.night {
+    @include setColors($night);
 }
