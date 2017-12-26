@@ -8,9 +8,7 @@
 }
 
 .insta-holder {
-    column-count: 5;
-    column-gap: 5px;
-    min-height: 500px;
+    min-height: 200px;
 
     a {
         border: 0;
@@ -20,6 +18,10 @@
         animation: fadeIn 2s normal forwards ease-in;
         display: inline-block;
         position: relative;
+        
+        img {
+            width: 100%;
+        }
 
         .meta {
             height: 100%;
@@ -36,14 +38,10 @@
 
             .likes {
                 display: block;
-                font-size: 1.25em;
-                margin: 100px auto 0;
                 text-align: center;
             }
 
             .caption {
-                bottom: 10px;
-                left: 10px;
                 position: absolute;
             }
         }
@@ -51,24 +49,45 @@
 }
 
 $widths: (
-    w1200: (
-        cols: 4,
-        width: 1200px
+    w1440: (
+        item_width: 25%,
+        likes_font: 2em,
+        likes_margin: 100px auto 0,
+        caption_bottom: 10px,
+        caption_display: inherit,
+        caption_left: 10px,
+        min: 961px,
+        max: 1440px
     ),
-
-    w1000: (
-        cols: 3,
-        width: 1000px
+    w960: (
+        item_width: 25%,
+        likes_font: 1.5em,
+        likes_margin: 75px auto 0,
+        caption_bottom: 10px,
+        caption_display: none,
+        caption_left: 10px,
+        min: 481px,
+        max: 960px
     ),
-
-    w800: (
-        cols: 2,
-        width: 800px
+    w480: (
+        item_width: 25%,
+        likes_font: 1.25em,
+        likes_margin: 25px 10px,
+        caption_bottom: 10px,
+        caption_display: none,
+        caption_left: 10px,
+        min: 321px,
+        max: 480px
     ),
-
-    w400: (
-        cols: 1,
-        width: 400px
+    w320: (
+        item_width: 25%,
+        likes_font: 1.25em,
+        likes_margin: 10px,
+        caption_bottom: 10px,
+        caption_display: none,
+        caption_left: 10px,
+        min: 0px,
+        max: 320px
     )
 );
 
@@ -77,9 +96,23 @@ $widths: (
 }
 
 @each $width, $val in $widths {
-    @media (max-width: getVal($width, width)) {
-        .insta-holder {
-            column-count: getVal($width, cols);
+    @media (min-width: getVal($width, min)) and (max-width: getVal($width, max)) {
+        .insta-item {
+            width: getVal($width, item_width);
+
+            .meta {
+                
+                .likes {
+                    font-size: getVal($width, likes_font);
+                    margin: getVal($width, likes_margin);
+                }
+
+                .caption {
+                    bottom: getVal($width, caption_bottom);
+                    display: getVal($width, caption_display);
+                    left: getVal($width, caption_left);
+                }
+            }
         }
-    }
+}
 }

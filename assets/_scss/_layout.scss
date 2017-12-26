@@ -64,22 +64,32 @@ twitterwidget {
 }
 
 .index {
-    
+    text-align: center;
+
+    h2 {
+        font-size: 2em;
+        margin: 2em 0 1em;
+    }
+
+    .tools {
+        &>div {
+            display: inline-block;
+            font-size: 4vw;
+            margin: 2vw;
+        }
+    }
 }
 
-.blog {
+.post-list {
+    list-style-type: none;
+    padding-left: 0;
 
-    .post-list {
-        list-style-type: none;
-        padding-left: 0;
+    li {
+        margin: 10px 0;
 
-        li {
-            margin: 10px 0;
-
-            .post-meta {
-                display: inline-block;
-                margin-right: 20px;
-            }
+        .post-meta {
+            display: inline-block;
+            margin-right: 20px;
         }
     }
 }

@@ -11,7 +11,7 @@ if (document.getElementById('quote')) {
 }
 
 if (document.getElementById('insta-box')) {
-  render(<Instagram />, document.getElementById('insta-box'));
+  render(<Instagram limit="8"/>, document.getElementById('insta-box'));
 }
 
 if (document.getElementById('helvetica')) {
