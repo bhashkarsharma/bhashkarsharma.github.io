@@ -14,12 +14,14 @@ import Leaderboard from '../Leaderboard/Leaderboard';
 class Game extends React.Component {
     constructor(props) {
         super(props);
+        this.cookieName = 'played';
         const colors = ['red', 'blue', 'green'];
         const count = props.difficulty === 1 ? [1, 2, 3] : [1];
         const shapes = ['round', 'square', 'triangle'];
         const fills = ['empty', 'shaded', 'filled'];
         let deck = [];
         const drawCount = props.difficulty === 1 ?  12 : 9;
+        const playedGame = SiteConf.getCookie(this.cookieName, '0');
 
         colors.forEach(color => {
             count.forEach(count => {
@@ -38,11 +40,15 @@ class Game extends React.Component {
             drawCount,
             drawSize: drawCount,
             endTime: 0,
+            firstError: playedGame === '1' ? false : true,
+            firstHint: playedGame === '1' ? false : true,
+            firstSuccess: playedGame === '1' ? false : true,
             hand: [],
             hints: [],
             hintCount: 0,
             lastWin: 0,
             mode: 1,
+            notification: {},
             possible: 0,
             progressWidth: 100,
             score: 0,
@@ -99,6 +105,7 @@ class Game extends React.Component {
 
     shuffleHand() {
         this.setState({ hand: this.shuffleArr(this.state.hand) });
+        this.getPossibleSets();
     }
 
     checkSet(a, b, c) {
@@ -154,6 +161,7 @@ class Game extends React.Component {
             possible,
             score
         });
+        this.showNotification(2);
     }
 
     calculateAvailablePoints() {
@@ -197,6 +205,7 @@ class Game extends React.Component {
             });
         });
         this.setState({ hand, visualOn: true });
+        if(!success) this.showNotification(3);
         setTimeout(() => {
             idx.forEach(i => {
                 hand[i].visual = '';
@@ -253,10 +262,46 @@ class Game extends React.Component {
         if (hint) {
             setTimeout(() => {
                 hint.forEach(i => {
+                    this.cardClick(hand[i]);
+                });
+                hint.forEach(i => {
                     hand[i].visual = '';
                 });
                 this.setState({ hand });
             }, 2000);
+        }
+        this.showNotification(4);
+    }
+
+    showNotification(notifCode) {
+        /**
+         * Types:
+         * 0 - neutral
+         * 1 - positive
+         * 2 - negative
+         */
+        const notifMap = {
+            1: { type: 0, val: 'Welcome' },
+            2: { type: 1, val: 'First Match!' },
+            3: { type: 2, val: 'Wrong Match' },
+            4: { type: 0, val: 'First Hint' },
+        };
+        if (notifCode && notifCode in notifMap) {
+            const notification = notifMap[notifCode];
+            const notifType = notification.type === 1 ? 'firstSuccess' :
+                            (notification.type === 2 ? 'firstError' : 'firstHint');
+
+            if (this.state[notifType]) {
+                this.setState({
+                    notification,
+                    [notifType]: false
+                });
+                setTimeout(() => {
+                    this.setState({ notification: {} });
+                }, 1000);
+
+                SiteConf.setCookie(this.cookieName, '1');
+            }
         }
     }
 
@@ -301,9 +346,17 @@ class Game extends React.Component {
                     </div>
                 }
                 {(this.state.deck.length > 0 || this.state.possible > 0) ?
-                    this.state.hand.map((i, k) => {
-                        return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
-                    }) :
+                    <div className="gamebox">
+                        {this.state.notification.val &&
+                            <div className={`notification type${this.state.notification.type}`}>{this.state.notification.val}</div>
+                        }
+                        <div className={`cards ${this.state.notification.val ? 'blur' : ''}`}>
+                            {this.state.hand.map((i, k) => {
+                                    return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
+                                })
+                            }
+                        </div>
+                    </div> :
                     <div className="final-stats">
                         <div className="over">Game Over</div>
                         <div>Score: {this.state.score}</div>

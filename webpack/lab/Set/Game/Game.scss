@@ -50,11 +50,6 @@
             font-weight: bold;
         }
     }
-
-    .score {
-        font-weight: bold;
-        text-align: center;
-    }
     
     .stats {
         font-weight: bold;
@@ -86,6 +81,43 @@
 
         .gameTimer {
             width: 100%;
+        }
+    }
+
+    .gamebox {
+        position: relative;
+
+        .notification {
+            $notif_opacity: 0.5;
+
+            border-radius: 5px;
+            font-size: 3em;
+            font-weight: bold;
+            height: 100%;
+            padding-top: 115px;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            z-index: 2;
+
+            &.type0 {
+                background: rgba($color: white, $alpha: $notif_opacity);
+                color: #333;
+            }
+
+            &.type1 {
+                background: rgba($color: lime, $alpha: $notif_opacity);
+                color: #333;
+            }
+
+            &.type2 {
+                background: rgba($color: red, $alpha: $notif_opacity);
+                color: white;
+            }
+        }
+
+        .cards.blur {
+            filter: blur(3px);
         }
     }
 

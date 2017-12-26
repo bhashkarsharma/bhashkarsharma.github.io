@@ -45,11 +45,12 @@ class Instructions extends React.Component {
                             <a className="desc">Bonus points remaining (timed mode)</a>
                             <progress className="gameTimer" value="60" max="100"></progress>
                         </div>
-                        {
-                            this.state.cards.map((i, k) => {
-                                return <Card conf={i} key={k}></Card>;
-                            })
-                        }
+                        <div className="cards">
+                            {this.state.cards.map((i, k) => {
+                                    return <Card conf={i} key={k}></Card>;
+                                })
+                            }
+                        </div>
                         <div className="stats">
                             <div>
                                 <a href="javascript:void(0);">

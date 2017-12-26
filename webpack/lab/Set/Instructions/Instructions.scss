@@ -49,11 +49,11 @@ $night: (
         .card {
             border-radius: 5px;
 
-            &:nth-child(n):nth-child(-n+3), &:nth-child(n+3):nth-child(-n+7){
+            &:nth-child(n):nth-child(-n+3), &:nth-child(n+3):nth-child(-n+6){
                 background: map-get($theme, success);
             }
             
-            &:nth-child(n+8):nth-child(-n+10){
+            &:nth-child(n+7):nth-child(-n+9){
                 background: map-get($theme, error);
             }
         }
