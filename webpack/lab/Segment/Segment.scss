@@ -1,3 +1,19 @@
 .segment-clock {
     margin: 20px auto 100px;
+
+    .error-message {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .segment-clock {
+        .error-message {
+            display: block;
+        }
+
+        .clock {
+            display: none;
+        }
+    }
 }

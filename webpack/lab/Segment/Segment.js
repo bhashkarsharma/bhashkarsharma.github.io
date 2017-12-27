@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import style from './Segment.scss';
 import Digit from './Digit/Digit';
 
@@ -11,7 +11,7 @@ class Segment extends React.Component {
         };
         this.tick = this.tick.bind(this);
     }
-  
+
     componentDidMount() {
         this.tick();
         this.interval = setInterval(this.tick, 1000);
@@ -33,15 +33,19 @@ class Segment extends React.Component {
         });
         this.setState({ time });
     }
-  
+
     render() {
         return (
             <div className="segment-clock">
-            {
-                this.state.time.map((i, k) => {
-                    return <Digit key={k} val={i}></Digit>
-                })
-            }
+                <div className="error-message">Your screen is too small.
+                Try viewing in landscape mode, or use a bigger device.</div>
+                <div className="clock">
+                    {
+                        this.state.time.map((i, k) => {
+                            return <Digit key={k} val={i}></Digit>
+                        })
+                    }
+                </div>
             </div>
         )
     }
