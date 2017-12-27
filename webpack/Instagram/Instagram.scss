@@ -8,6 +8,7 @@
 }
 
 .insta-holder {
+    columns: 4;
     min-height: 200px;
 
     a {
@@ -18,6 +19,7 @@
         animation: fadeIn 2s normal forwards ease-in;
         display: inline-block;
         position: relative;
+        width: 100%;
         
         img {
             width: 100%;
@@ -43,6 +45,8 @@
 
             .caption {
                 position: absolute;
+                bottom: 10px;
+                left: 10px;
             }
         }
     }
@@ -50,42 +54,30 @@
 
 $widths: (
     w1440: (
-        item_width: 25%,
         likes_font: 2em,
         likes_margin: 100px auto 0,
-        caption_bottom: 10px,
         caption_display: inherit,
-        caption_left: 10px,
         min: 961px,
         max: 1440px
     ),
     w960: (
-        item_width: 25%,
         likes_font: 1.5em,
         likes_margin: 75px auto 0,
-        caption_bottom: 10px,
         caption_display: none,
-        caption_left: 10px,
         min: 481px,
         max: 960px
     ),
     w480: (
-        item_width: 25%,
         likes_font: 1.25em,
         likes_margin: 25px 10px,
-        caption_bottom: 10px,
         caption_display: none,
-        caption_left: 10px,
         min: 321px,
         max: 480px
     ),
     w320: (
-        item_width: 25%,
         likes_font: 1.25em,
         likes_margin: 10px,
-        caption_bottom: 10px,
         caption_display: none,
-        caption_left: 10px,
         min: 0px,
         max: 320px
     )
@@ -98,7 +90,6 @@ $widths: (
 @each $width, $val in $widths {
     @media (min-width: getVal($width, min)) and (max-width: getVal($width, max)) {
         .insta-item {
-            width: getVal($width, item_width);
 
             .meta {
                 
@@ -108,9 +99,7 @@ $widths: (
                 }
 
                 .caption {
-                    bottom: getVal($width, caption_bottom);
                     display: getVal($width, caption_display);
-                    left: getVal($width, caption_left);
                 }
             }
         }

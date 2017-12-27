@@ -2,7 +2,7 @@
 layout: base
 ---
 <div class="index">
-    <h2>My Clicks</h2>
+    <h2>My Creations</h2>
     <div id="insta-box"></div>
     <h2>Recent Post</h2>
     {% for post in site.posts limit:1 %}
@@ -26,7 +26,5 @@ layout: base
         <div><i class="fab fa-python"></i></div>
         <div><i class="fab fa-react"></i></div>
         <div><i class="fab fa-sass"></i></div>
-        <div><i class="fab fa-stack-overflow"></i></div>
-        <div><i class="fab fa-y-combinator"></i></div>
     </div>
 </div>
