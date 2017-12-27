@@ -119,12 +119,17 @@ header {
 
             li {
                 display: inline-block;
-                margin-right: 10px;
                 padding: 5px;
+            }
+        }
+    }
+}
 
-                &:first-child {
-                    margin-left: 10px;
-                }
+@media (min-width: 480px) {
+    header {
+        nav {
+            li {
+                margin: 5px 0;
             }
         }
     }

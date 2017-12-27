@@ -40,7 +40,7 @@ $widths: (
         digit_width: 90px,
         edge_border_rad: 12px,
         edge_height: 65px,
-        edge_transform_origin: 11px 11px,
+        edge_transform_origin: 10px 10px,
         edge_width: 20px,
         knob_border_rad: 12px,
         knob_dim: 20px,
@@ -51,7 +51,8 @@ $widths: (
         offset_top: 67px,
         offset_right: 22px,
         min_width: 961px,
-        max_width: 1600px
+        max_width: 1600px,
+        odd_margin_left: 75px
     ),
 
     w480: (
@@ -71,7 +72,8 @@ $widths: (
         offset_top: 39px,
         offset_right: 15px,
         min_width: 481px,
-        max_width: 960px
+        max_width: 960px,
+        odd_margin_left: 40px
     ),
 
     w320: (
@@ -91,7 +93,8 @@ $widths: (
         offset_top: 28px,
         offset_right: 10px,
         min_width: 321px,
-        max_width: 480px
+        max_width: 480px,
+        odd_margin_left: 10px
     )
 );
 
@@ -158,6 +161,9 @@ $widths: (
                     bottom: getVal($width, offset_bottom);
                     right: getVal($width, offset_right);
                 }
+            }
+            &:nth-child(3), &:nth-child(5) {
+                margin-left: getVal($width, odd_margin_left);
             }
         }
     }
