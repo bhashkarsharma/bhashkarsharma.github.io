@@ -9,6 +9,9 @@ $night: (
 );
 
 .instructions {
+    h2 {
+        text-align: center;
+    }
     
     button {
         display: block;
@@ -46,7 +49,7 @@ $night: (
 
 @mixin setColors($theme) {
     .demo {
-        .card {
+        .cardbox {
             border-radius: 5px;
 
             &:nth-child(n):nth-child(-n+3), &:nth-child(n+3):nth-child(-n+6){

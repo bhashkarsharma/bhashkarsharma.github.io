@@ -346,13 +346,15 @@ class Game extends React.Component {
                     </div>
                 }
                 {(this.state.deck.length > 0 || this.state.possible > 0) ?
-                    <div className="gamebox">
+                    <div className="playpen">
                         {this.state.notification.val &&
                             <div className={`notification type${this.state.notification.type}`}>{this.state.notification.val}</div>
                         }
                         <div className={`cards ${this.state.notification.val ? 'blur' : ''}`}>
                             {this.state.hand.map((i, k) => {
-                                    return <Card conf={i} key={k} onClick={this.cardClick.bind(this, i)}></Card>;
+                                    return <div key={k} className="cardbox">
+                                        <Card conf={i} onClick={this.cardClick.bind(this, i)}></Card>
+                                    </div>;
                                 })
                             }
                         </div>

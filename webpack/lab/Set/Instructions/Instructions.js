@@ -24,6 +24,7 @@ class Instructions extends React.Component {
     render() {
         return (
             <div className="instructions">
+                <h2>Instructions</h2>
                 <div className="demo">
                     <div className="set medium">
                         <div className="stats">
@@ -45,11 +46,15 @@ class Instructions extends React.Component {
                             <a className="desc">Bonus points remaining (timed mode)</a>
                             <progress className="gameTimer" value="60" max="100"></progress>
                         </div>
-                        <div className="cards">
-                            {this.state.cards.map((i, k) => {
-                                    return <Card conf={i} key={k}></Card>;
-                                })
-                            }
+                        <div className="playpen">
+                            <div className="cards">
+                                {this.state.cards.map((i, k) => {
+                                        return <div key={k} className="cardbox">
+                                            <Card conf={i}></Card>
+                                        </div>;
+                                    })
+                                }
+                            </div>
                         </div>
                         <div className="stats">
                             <div>

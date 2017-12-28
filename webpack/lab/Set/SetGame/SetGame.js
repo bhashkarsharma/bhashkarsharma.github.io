@@ -41,7 +41,7 @@ class SetGame extends React.Component {
 
     render() {
         return (
-            <div className="set">
+            <div className="setbox">
                 {this.state.visited === '0' ?
                     <Instructions onContinue={this.onContinue.bind(this)}></Instructions> :
                     <div>

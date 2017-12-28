@@ -14,7 +14,7 @@
     }
 }
 
-.set {
+.setbox {
     padding: 20px;
 
     a {
@@ -37,119 +37,131 @@
         padding: 15px;
     }
 
-    .final-stats {
-        animation: rainbow 18s ease infinite;
-        background: linear-gradient(90deg, #ff2400, #e81d1d, #e8b71d, #e3e81d,
-                    #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-        background-size: 1800% 1800%;
-        padding: 90px 10px;
-        text-align: center;
+    .set {
 
-        .over {
-            font-size: 2em;
-            font-weight: bold;
-        }
-    }
-    
-    .stats {
-        font-weight: bold;
-        margin: 0 5px;
-
-        &>div {
-            display: inline-block;
-            font-size: 1.2em;
-            width: 33.33%;
-
-            &:nth-child(1) {
-                text-align: left;
-            }
-
-            &:nth-child(2) {
-                text-align: center;
-            }
-
-            &:nth-child(3) {
-                text-align: right;
-            }
-
-            a {
-                border: 1px solid;
-                border-radius: 5px;
-                display: inline-block;
-            }
-        }
-
-        .gameTimer {
-            width: 100%;
-        }
-    }
-
-    .gamebox {
-        position: relative;
-
-        .notification {
-            $notif_opacity: 0.5;
-
-            border-radius: 5px;
-            font-size: 3em;
-            font-weight: bold;
-            height: 100%;
-            padding-top: 115px;
-            position: absolute;
+        .final-stats {
+            animation: rainbow 18s ease infinite;
+            background: linear-gradient(90deg, #ff2400, #e81d1d, #e8b71d, #e3e81d,
+                        #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+            background-size: 1800% 1800%;
+            padding: 90px 10px;
             text-align: center;
-            width: 100%;
-            z-index: 2;
 
-            &.type0 {
-                background: rgba($color: white, $alpha: $notif_opacity);
-                color: #333;
-            }
-
-            &.type1 {
-                background: rgba($color: lime, $alpha: $notif_opacity);
-                color: #333;
-            }
-
-            &.type2 {
-                background: rgba($color: red, $alpha: $notif_opacity);
-                color: white;
+            .over {
+                font-size: 2em;
+                font-weight: bold;
             }
         }
-
-        .cards.blur {
-            filter: blur(3px);
-        }
-    }
-
-    &.easy {
-
-        .card {
-
-            .icon {
-                margin: 15px auto;
-                zoom: 1.5;
-            }
-        }
-    }
-
-    &.medium {
-
-        .card {
-
-            .icon {
-                &:nth-child(1):nth-last-child(1) {
-                    margin: 25px auto;
-                }
         
-                &:nth-child(1):nth-last-child(2),
-                &:nth-child(2):nth-last-child(1) {
-                    margin: 10px auto;
+        .stats {
+            font-weight: bold;
+            margin: 0 5px;
+
+            &>div {
+                display: inline-block;
+                font-size: 1.2em;
+                width: 33.33%;
+
+                &:nth-child(1) {
+                    text-align: left;
                 }
 
-                &:nth-child(1):nth-last-child(3),
-                &:nth-child(2):nth-last-child(2),
-                &:nth-child(3):nth-last-child(1) {
-                    margin: 5px auto;
+                &:nth-child(2) {
+                    text-align: center;
+                }
+
+                &:nth-child(3) {
+                    text-align: right;
+                }
+
+                a {
+                    border: 1px solid;
+                    border-radius: 5px;
+                    display: inline-block;
+                    
+                    &:not([href]) {
+                        border: none;
+                    }
+                }
+            }
+
+            .gameTimer {
+                width: 100%;
+            }
+        }
+
+        .playpen {
+            position: relative;
+
+            .cardbox {
+                display: inline-block;
+                width: 33.33%;
+            }
+
+            .notification {
+                $notif_opacity: 0.5;
+
+                border-radius: 5px;
+                font-size: 3em;
+                font-weight: bold;
+                height: 100%;
+                padding-top: 115px;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                z-index: 2;
+
+                &.type0 {
+                    background: rgba($color: white, $alpha: $notif_opacity);
+                    color: #333;
+                }
+
+                &.type1 {
+                    background: rgba($color: lime, $alpha: $notif_opacity);
+                    color: #333;
+                }
+
+                &.type2 {
+                    background: rgba($color: red, $alpha: $notif_opacity);
+                    color: white;
+                }
+            }
+
+            .cards.blur {
+                filter: blur(3px);
+            }
+        }
+
+        &.easy {
+
+            .card {
+
+                .icon {
+                    margin: 15px auto;
+                    zoom: 1.5;
+                }
+            }
+        }
+
+        &.medium {
+
+            .card {
+
+                .icon {
+                    &:nth-child(1):nth-last-child(1) {
+                        margin: 25px auto;
+                    }
+            
+                    &:nth-child(1):nth-last-child(2),
+                    &:nth-child(2):nth-last-child(1) {
+                        margin: 10px auto;
+                    }
+
+                    &:nth-child(1):nth-last-child(3),
+                    &:nth-child(2):nth-last-child(2),
+                    &:nth-child(3):nth-last-child(1) {
+                        margin: 5px auto;
+                    }
                 }
             }
         }

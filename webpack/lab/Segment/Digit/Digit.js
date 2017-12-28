@@ -30,7 +30,7 @@ class Digit extends React.Component {
                     const trans2 = {
                         transform: `rotateZ(${this.pattern[this.props.val][2*i + 1] * 45}deg)`
                     };
-                    return <div key={k} className={`node c${i}`}>
+                    return <div key={k} className="node">
                         <div className="edge" style={trans1}></div>
                         <div className="edge" style={trans2}></div>
                         <div className="knob">
