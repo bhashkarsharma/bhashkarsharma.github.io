@@ -1,4 +1,5 @@
 ---
+title: Helvetica Clock
 layout: base
 redirect_from: /lab/helvetica-clock/
 ---

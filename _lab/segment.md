@@ -1,4 +1,5 @@
 ---
+title: Segment Clock
 layout: base
 redirect_from: /lab/segment-clock/
 ---

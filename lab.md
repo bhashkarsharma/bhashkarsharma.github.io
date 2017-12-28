@@ -1,4 +1,5 @@
 ---
+title: Lab
 layout: base
 permalink: /lab/
 ---

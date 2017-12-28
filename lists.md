@@ -1,4 +1,5 @@
 ---
+title: Lists
 layout: base
 permalink: /lists/
 ---

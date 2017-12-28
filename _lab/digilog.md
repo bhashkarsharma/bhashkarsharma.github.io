@@ -1,4 +1,5 @@
 ---
+title: Digital-Analog Clock
 layout: base
 ---
 <div class="lab">

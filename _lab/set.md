@@ -1,4 +1,5 @@
 ---
+title: Set
 layout: base
 ---
 <div class="lab">

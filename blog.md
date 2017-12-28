@@ -1,4 +1,5 @@
 ---
+title: Posts
 layout: base
 ---
 <div class="blog">
