@@ -7,7 +7,7 @@ defaults:
       layout: "post"
 
 parentsite: https://www.bhashkar.me
-permalink: /blog/:title/
+permalink: /blog/:year/:month/:title/
 
 collections:
   lists:
