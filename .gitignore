@@ -3,7 +3,9 @@ package-lock.json
 .sass-cache
 .jekyll-metadata
 _site/
+_posts/
 node_modules/
 scripts/conf*
 assets/js/bundle.js
+assets/images/posts/
 assets/posts.json

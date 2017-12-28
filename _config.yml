@@ -38,6 +38,7 @@ exclude:
   - 'webpack.config.js'
 
 theme: jekyll-theme-minimal
+highlighter: rouge
 sass:
   load_paths:
     - assets/

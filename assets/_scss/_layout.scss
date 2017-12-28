@@ -124,6 +124,15 @@ twitterwidget {
                 margin: 0;
             }
         }
+
+        div.highlight {
+            border: 1px solid;
+            padding: 0 10px;
+
+            &:hover {
+                border: 1px dashed;
+            }
+        }
     }
 }
 
@@ -156,6 +165,8 @@ twitterwidget {
 
 @import '_scss/header';
 @import '_scss/footer';
+
+@import '_scss/highlight';
 
 @import '_scss/variables';
 @import '_scss/theme';
