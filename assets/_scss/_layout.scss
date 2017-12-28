@@ -36,6 +36,7 @@ a {
 .content {
     flex: 1;
     margin: auto;
+    max-width: 100%;
     padding: 1em 2em;
 }
 
@@ -127,6 +128,7 @@ twitterwidget {
 
         div.highlight {
             border: 1px solid;
+            overflow: scroll;
             padding: 0 10px;
 
             &:hover {
