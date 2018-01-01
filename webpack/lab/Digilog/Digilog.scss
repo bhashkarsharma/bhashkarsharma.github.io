@@ -1,4 +1,26 @@
 .digilog {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+
+    .face-box {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .mode-selector {
+        margin: 2vw;
+        text-align: center;
+
+        label {
+            display: inline-block;
+            font-size: 2em;
+            margin: 1vw 2vw;
+
+            &.chosen {
+                font-weight: bold;
+            }
+        }
+
+        .fa-holder {
+            display: inline-block;
+        }
+    }
 }

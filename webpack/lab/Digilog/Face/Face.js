@@ -25,13 +25,13 @@ class Face extends React.Component {
             {
                 [0, 1, 2, 3, 4, 5].map((i, k) => {
                     const trans1 = {
-                        transform: `rotateZ(${this.pattern[this.props.val][2*i] * 45}deg)`
+                        transform: `rotateZ(${this.props.mode ? this.pattern[this.props.val][2*i] * 45 : this.props.hh}deg)`
                     };
                     const trans2 = {
-                        transform: `rotateZ(${this.pattern[this.props.val][2*i + 1] * 45}deg)`
+                        transform: `rotateZ(${this.props.mode ? this.pattern[this.props.val][2*i + 1] * 45: this.props.mm}deg)`
                     };
                     return <div key={k} className="node">
-                        <div className="hand mask"></div>
+                        {this.props.mode ? <div className="hand mask"></div> : ''}
                         <div className="hand" style={trans1}></div>
                         <div className="hand" style={trans2}></div>
                     </div>
