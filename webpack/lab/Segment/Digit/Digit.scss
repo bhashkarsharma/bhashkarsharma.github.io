@@ -11,159 +11,141 @@ $colors_night: (
 );
 
 .digit {
-    display: inline-block;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 16vw;
+    margin: 0 1vw;
     position: relative;
+    width: 9vw;
 
     .node {
         position: absolute;
 
         .edge {
+            border-radius: 1vw;
+            height: 5vw;
             position: absolute;
             transition-duration: 0.5s;
+            transform-origin: 0.75vw 0.75vw;
+            width: 1.5vw;
+
+            &.mask {
+                z-index: 2;
+            }
         }
 
         .knob {
+            border-radius: 1vw;
+            height: 1.5vw;
             position: absolute;
-            z-index: 1;
+            width: 1.5vw;
+            z-index: 3;
 
             .inner {
+                border-radius: 1vw;
+                height: 0.5vw;
+                left: 0.45vw;
                 position: absolute;
+                top: 0.45vw;
+                width: 0.5vw;
             }
         }
-    }
-}
 
-$widths: (
-    w960: (
-        digit_height: 155px,
-        digit_margin: 0 25px,
-        digit_width: 90px,
-        edge_border_rad: 12px,
-        edge_height: 65px,
-        edge_transform_origin: 10px 10px,
-        edge_width: 20px,
-        knob_border_rad: 12px,
-        knob_dim: 20px,
-        inner_border_rad: 10px,
-        inner_dim: 10px,
-        inner_offset: 4px,
-        offset_bottom: 22px,
-        offset_top: 67px,
-        offset_right: 22px,
-        min_width: 961px,
-        max_width: 1600px,
-        odd_margin_left: 75px
-    ),
+        $node_dist: 5vw;
 
-    w480: (
-        digit_height: 92px,
-        digit_margin: 0 12px,
-        digit_width: 55px,
-        edge_border_rad: 10px,
-        edge_height: 37px,
-        edge_transform_origin: 7px 7px,
-        edge_width: 13px,
-        knob_border_rad: 7px,
-        knob_dim: 13px,
-        inner_border_rad: 7px,
-        inner_dim: 5px,
-        inner_offset: 4px,
-        offset_bottom: 15px,
-        offset_top: 39px,
-        offset_right: 15px,
-        min_width: 481px,
-        max_width: 960px,
-        odd_margin_left: 40px
-    ),
+        &:nth-child(1) {
+            left: 0;
+            top: 0;
 
-    w320: (
-        digit_height: 66px,
-        digit_margin: 0 10px,
-        digit_width: 38px,
-        edge_border_rad: 12px,
-        edge_height: 26px,
-        edge_transform_origin: 4px 4px,
-        edge_width: 8px,
-        knob_border_rad: 6px,
-        knob_dim: 8px,
-        inner_border_rad: 4px,
-        inner_dim: 4px,
-        inner_offset: 2px,
-        offset_bottom: 10px,
-        offset_top: 28px,
-        offset_right: 10px,
-        min_width: 321px,
-        max_width: 480px,
-        odd_margin_left: 10px
-    )
-);
+            .edge.mask {
 
-@function getVal($map, $val) {
-    @return map-get(map-get($widths, $map), $val);
-}
-
-@each $width, $val in $widths {
-    @media (min-width: getVal($width, min_width)) and (max-width: getVal($width, max_width)) {
-        .digit {
-            height: getVal($width, digit_height);
-            margin: getVal($width, digit_margin);
-            width: getVal($width, digit_width);
-        
-            .node {
-        
-                .edge {
-                    border-radius: getVal($width, edge_border_rad);
-                    height: getVal($width, edge_height);
-                    transform-origin: getVal($width, edge_transform_origin);
-                    width: getVal($width, edge_width);
-                }
-        
-                .knob {
-                    border-radius: getVal($width, knob_border_rad);
-                    height: getVal($width, knob_dim);
-                    width: getVal($width, knob_dim);
-        
-                    .inner {
-                        border-radius: getVal($width, inner_border_rad);
-                        height: getVal($width, inner_dim);
-                        left: getVal($width, inner_offset);
-                        top: getVal($width, inner_offset);
-                        width: getVal($width, inner_dim);
-                    }
-                }
-        
-                &:nth-child(1) {
-                    left: 0;
-                    top: 0;
-                }
-                
-                &:nth-child(2) {
-                    right: getVal($width, offset_right);
-                    top: 0;
-                }
-                
                 &:nth-child(3) {
-                    left: 0;
-                    top: getVal($width, offset_top);
+                    transform: rotateZ(90deg);
                 }
-                
+
                 &:nth-child(4) {
-                    right: getVal($width, offset_right);
-                    top: getVal($width, offset_top);
-                }
-                
-                &:nth-child(5) {
-                    bottom: getVal($width, offset_bottom);
-                    left: 0;
-                }
-                
-                &:nth-child(6) {
-                    bottom: getVal($width, offset_bottom);
-                    right: getVal($width, offset_right);
+                    transform: rotateZ(180deg);
                 }
             }
-            &:nth-child(3), &:nth-child(5) {
-                margin-left: getVal($width, odd_margin_left);
+        }
+        
+        &:nth-child(2) {
+            left: $node_dist;
+            top: 0;
+
+            .edge.mask {
+                
+                &:nth-child(3) {
+                    transform: rotateZ(270deg);
+                }
+
+                &:nth-child(4) {
+                    transform: rotateZ(180deg);
+                }
+            }
+        }
+        
+        &:nth-child(3) {
+            left: 0;
+            top: $node_dist;
+
+            .edge.mask {
+                
+                &:nth-child(3) {
+                    transform: rotateZ(90deg);
+                }
+
+                &:nth-child(4) {
+                    transform: rotateZ(90deg);
+                }
+            }
+        }
+        
+        &:nth-child(4) {
+            left: $node_dist;
+            top: $node_dist;
+
+            .edge.mask {
+                
+                &:nth-child(3) {
+                    transform: rotateZ(270deg);
+                }
+
+                &:nth-child(4) {
+                    transform: rotateZ(270deg);
+                }
+            }
+        }
+        
+        &:nth-child(5) {
+            left: 0;
+            top: 2 * $node_dist;
+
+            .edge.mask {
+                
+                &:nth-child(3) {
+                    transform: rotateZ(0deg);
+                }
+
+                &:nth-child(4) {
+                    transform: rotateZ(90deg);
+                }
+            }
+        }
+        
+        &:nth-child(6) {
+            left: $node_dist;
+            top: 2 * $node_dist;
+
+            .edge.mask {
+                
+                &:nth-child(3) {
+                    transform: rotateZ(0deg);
+                }
+
+                &:nth-child(4) {
+                    transform: rotateZ(270deg);
+                }
             }
         }
     }
@@ -178,6 +160,12 @@ $widths: (
                 background: map-get($theme, bg);
                 border: 1px solid map-get($theme, border);
                 box-shadow: 1px 1px 1px map-get($theme, shadow);
+
+                &.mask {
+                    background: map-get($theme, shadow);
+                    border: 1px solid map-get($theme, border);
+                    box-shadow: 1px 1px 1px map-get($theme, shadow);
+                }
             }
     
             .knob {

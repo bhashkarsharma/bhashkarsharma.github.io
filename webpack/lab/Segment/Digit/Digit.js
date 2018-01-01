@@ -33,6 +33,8 @@ class Digit extends React.Component {
                     return <div key={k} className="node">
                         <div className="edge" style={trans1}></div>
                         <div className="edge" style={trans2}></div>
+                        <div className="edge mask"></div>
+                        <div className="edge mask"></div>
                         <div className="knob">
                             <div className="inner"></div>
                         </div>
