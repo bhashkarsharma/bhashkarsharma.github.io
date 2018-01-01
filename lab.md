@@ -8,4 +8,5 @@ permalink: /lab/
 <a href="/lab/helvetica/"><h1>Helvetica Clock</h1></a>
 <a href="/lab/set/"><h1>Set</h1></a>
 <a href="/lab/segment/"><h1>Segment Clock</h1></a>
+<a href="/lab/digilog/"><h1>Digital-Analog Clock</h1></a>
 </div>

@@ -1,12 +1,72 @@
+$theme_day: (
+    hand_color: #000000,
+    hand_mask: #CCCCCC
+);
+
+$theme_night: (
+    hand_color: #ffffff,
+    hand_mask: #333333
+);
+
 .face {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
 
-    .hand {
-        border: 1px solid;
-        height: 1vw;
-        width: 4vw;
+    .node {
+        height: 3vw;
+        margin: 2vw;
+        position: relative;
+        width: 3vw;
 
-        &:mask {
+        .hand {
+            border: 1px solid;
+            border-top-left-radius: 1vw;
+            border-bottom-left-radius: 1vw;
+            height: 1vw;
+            position: absolute;
+            transform-origin: 0.5vw;
+            transition-duration: 0.5s;
+            width: 4vw;
 
+            &.mask {
+                border-bottom-left-radius: 0;
+                left: -0.7vw;
+                top: 0.7vw;
+                transform: rotateZ(135deg);
+                width: 3vw;
+                z-index: 2;
+            }
+        }
+
+        &:nth-child(2n) {
+            .hand.mask {
+                visibility: hidden;
+            }
         }
     }
+}
+
+@mixin faceTheme($theme) {
+    .face {
+
+        .node {
+
+            .hand {
+                background: map-get($theme, hand_color);
+
+                &.mask {
+                    background: map-get($theme, hand_mask);
+                }
+            }
+        }
+    }
+}
+
+.day {
+    @include faceTheme($theme_day);
+}
+
+.night {
+    @include faceTheme($theme_night);
 }

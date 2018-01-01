@@ -7,14 +7,14 @@ class Digilog extends React.Component {
     constructor() {
         super();
         this.state = {
-            faces: []
+            time: []
         };
         this.tick = this.tick.bind(this);
     }
 
     componentDidMount() {
         this.tick();
-        this.interval = setInterval(this.tick, 5000);
+        this.interval = setInterval(this.tick, 1000);
     }
 
     componentWillUnmount() {
@@ -22,7 +22,6 @@ class Digilog extends React.Component {
     }
 
     tick() {
-        const faces = [];
         const date = new Date();
         let time = [];
         [date.getHours(), date.getMinutes(), date.getSeconds()].forEach(i => {
@@ -32,14 +31,14 @@ class Digilog extends React.Component {
                 time = time.concat(['0', String(i)]);
             }
         });
-        this.setState({ faces });
+        this.setState({ time });
     }
 
     render() {
         return (
             <div className="digilog">
             {
-                this.state.faces.map((i, k) => {
+                this.state.time.map((i, k) => {
                     return <Face val={i} idx={k} key={k}></Face> 
                 })
             }
