@@ -17,11 +17,11 @@ header {
     <h1 class="post-title">{{ page.title }}</h1>
     {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
     <span class="post-meta">{{ page.date | date: date_format }}</span>
-    {% if page.categories %}<span class="post-meta">Category: <a class="post-category" href="/categories/#{{page.categories[0] | slugify}}">{{ page.categories[0] }}</a></span>{% endif %}
+    {% if page.categories %}<span class="post-meta">Posted in: <a class="post-category" href="{% link categories.md %}#{{page.categories[0] | slugify}}">{{ page.categories[0] }}</a></span>{% endif %}
     {% if page.tags %}
     <span class="post-meta">
         {% for tag in page.tags %}
-        <a class="post-tag" href="/tags/#{{ tag | slugify }}">{{ tag }}</a>
+        <a class="post-tag" href="{% link tags.md %}#{{ tag | slugify }}">{{ tag }}</a>
         {% endfor %}
     </span>
     {% endif %}

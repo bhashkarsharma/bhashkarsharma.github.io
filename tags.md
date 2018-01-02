@@ -5,7 +5,8 @@ title: Tags
 <div class="blog">
   <h1 class="page-heading">Tags</h1>
   <div>
-    {% for tag in site.tags %}
+    {% assign sitetags = site.tags | sort %}
+    {% for tag in sitetags %}
     <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
     <ul class="post-list">
       {% for post in tag[1] %}
