@@ -1,6 +1,6 @@
 var SiteConf = (function() {
 
-    var cookieName = 'theme';
+    var cookieName = 'siteTheme';
     var expires = new Date(Date.now() + 7 * 864e5).toUTCString();
 
     function setCookie(key, val, expires) {
@@ -16,6 +16,11 @@ var SiteConf = (function() {
 
     function deleteCookie(key) {
         setCookie(cookie, null, 'Thu, 01 Jan 1970 00:00:01 GMT');
+    }
+
+    function getThemeByTOD() {
+        var h = new Date().getHours();
+        return h > 17 ? 'night' : (h > 5 ? 'day' : 'night');
     }
 
     function switchTheme(theme, persist=true) {
@@ -35,16 +40,15 @@ var SiteConf = (function() {
         getCookie,
         setCookie,
         deleteCookie,
+        getThemeByTOD,
         switchTheme
     };
 })();
 
 (function() {
-    var theme = SiteConf.getCookie(SiteConf.cookieName, 'night');
-    if (theme.length > 0) SiteConf.switchTheme(theme);
-})();
+    var theme = SiteConf.getCookie(SiteConf.cookieName, SiteConf.getThemeByTOD());
+    if (theme.length > 0) SiteConf.switchTheme(theme, false);
 
-(function() {
     document.querySelectorAll('a').forEach(function(e) {
         e.getAttribute('href') && e.hostname !== location.hostname && (e.target = '_blank');
     });
