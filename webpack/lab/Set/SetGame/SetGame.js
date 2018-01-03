@@ -4,7 +4,7 @@ import style from './SetGame.scss';
 import Game from '../Game/Game';
 import Instructions from '../Instructions/Instructions';
 
-class SetGame extends React.Component {
+export default class SetGame extends React.Component {
     constructor() {
         super();
         this.cookieName = 'visited';
@@ -78,4 +78,3 @@ class SetGame extends React.Component {
         )
     }
 }
-export default SetGame;

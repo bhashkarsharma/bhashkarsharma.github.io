@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import style from './Quote.scss';
 
-class Quote extends React.Component {
+export default class Quote extends React.Component {
   constructor() {
     super();
     this.state = { quote };
@@ -32,4 +32,3 @@ class Quote extends React.Component {
     )
   }
 }
-export default Quote;

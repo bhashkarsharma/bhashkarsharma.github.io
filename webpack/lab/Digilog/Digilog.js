@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import style from './Digilog.scss';
 import Face from './Face/Face';
 
-class Digilog extends React.Component {
+export default class Digilog extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -71,4 +71,3 @@ class Digilog extends React.Component {
         )
     }
 }
-export default Digilog;

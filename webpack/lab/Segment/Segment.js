@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import style from './Segment.scss';
 import Digit from './Digit/Digit';
 
-class Segment extends React.Component {
+export default class Segment extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -50,4 +50,3 @@ class Segment extends React.Component {
         )
     }
 }
-export default Segment;

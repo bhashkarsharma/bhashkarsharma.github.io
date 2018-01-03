@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import style from './Leaderboard.scss';
 import Fire from '../firebase/Fire';
 
-class Leaderboard extends React.Component {
+export default class Leaderboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -94,4 +94,3 @@ class Leaderboard extends React.Component {
         )
     }
 }
-export default Leaderboard;

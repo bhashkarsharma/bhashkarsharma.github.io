@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import style from './Digit.scss';
 
-class Digit extends React.Component {
+export default class Digit extends React.Component {
     constructor(props) {
         super(props);
         this.pattern = {
@@ -45,4 +45,3 @@ class Digit extends React.Component {
         )
     }
 }
-export default Digit;

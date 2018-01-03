@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import style from './Card.scss';
 
-class Card extends React.Component {
+export default class Card extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -23,4 +23,3 @@ class Card extends React.Component {
         )
     }
 }
-export default Card;

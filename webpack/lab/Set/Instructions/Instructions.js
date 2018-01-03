@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import style from './Instructions.scss';
 import Card from '../Card/Card';
 
-class Instructions extends React.Component {
+export default class Instructions extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -110,4 +110,3 @@ class Instructions extends React.Component {
         )
     }
 }
-export default Instructions;
